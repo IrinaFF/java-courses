@@ -4,7 +4,9 @@
      Добавить два класс клиента ArgRunner, InteractRunner.
      ArgRunner - данные получает из параметров запуска программы.
      InteractRunner - данные вводит пользователь.
-     Добавить возможность выборка операции. Валидацию. Повторное использование результат вычисления.
+     Добавить возможность выбора операции.
+     Валидацию.
+     Повторное использование результата вычисления.
  */
 public class Calculator {
     /*
@@ -16,8 +18,48 @@ public class Calculator {
      * @param params Аргументы суммирования.
      */
     public void add(int ... params) {
-        for (Integer param : params) {
-            this.result += param;
+        for (Integer m : params) {
+            this.result += m;
+        }
+    }
+    /**
+     * Вычитаем аргументы
+     * @param params Аргументы вычитания.
+     */
+    public void diff(int ... params) {
+        this.result = params[0];
+        for (Integer m = 1;  m <= params.length - 1; m++) {
+            this.result -= params[m];
+        }
+    }
+    /**
+     * Умножаем аргументы
+     * @param params Аргументы умножения.
+     */
+    public void mult(int ... params) {
+        this.result = params[0];
+        for (Integer m = 1;  m <= params.length - 1; m++) {
+            this.result *= params[m];
+        }
+    }
+    /**
+     * Делим аргументы
+     * @param params Аргументы деления.
+     */
+    public void div(int ... params) {
+        this.result = params[0];
+        for (Integer m = 1;  m <= params.length - 1; m++) {
+            this.result /= params[m];
+        }
+    }
+    /**
+     * Возводим в степень аргументы
+     * @param params Аргументы возведения в степень.
+     */
+    public void inv(int ... params) {
+        this.result = params[0];
+        for (Integer m = 1;  m <= params.length - 1; m++) {
+            this.result = (int) (Math.pow(this.result, params[m]));
         }
     }
     /**
