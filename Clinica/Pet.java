@@ -5,25 +5,32 @@ package Clinica;
  * @since 17.09.2016
  **/
 
-public class Pet {
+public interface Pet{
 
-    public String name;
+    //public String name;
+    //private Animal animal;
 
-    public Pet(String name){
-        this.name = name;
-    }
+    //Pet(){};
+
+    //Pet(String name){
+        //this.name = name;
+    //}
+    //Pet(final Animal animal) {
+        //this.animal = animal;
+    //};
     /**
      * Издавать звук
      */
-    public void makeSound() {
-        System.out.println("Fr, Fr");
-    }
+    public void makeSound();// {
+        //System.out.println("Fr, Fr");
+    //}
         /**
          * Имя питомца
          */
 
-    public String getName() {
-        return this.name;
-    }
+    //public String getName() {
+        //return this.name;
+    //}
+        String getName();
 }
 

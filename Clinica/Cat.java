@@ -6,11 +6,11 @@ package Clinica;
  * @since 17.09.2016
  **/
 
-public class Cat extends Pet {
+public class Cat implements Pet {
     public final String name;
 
-
-    public Cat(String name) {
+    //Cat() {};
+    Cat(String name) {
         this.name = name;
     };
 
