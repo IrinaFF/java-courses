@@ -20,7 +20,7 @@ public class Dog implements Pet{
         this.name = name;
     }
 
-    Dog(final Pet pet) {
+    public Dog(final Pet pet) {
         this.pet = pet;
     };
     @Override
