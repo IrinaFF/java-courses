@@ -13,7 +13,6 @@ public class Cat implements Pet {
      * Конструктор
      * @param name Имя животного
      **/
-
     public Cat(String name) {
         this.name = name;
     };
@@ -24,9 +23,14 @@ public class Cat implements Pet {
     public void catchMouth() {
     }
 
+    /**
+     * Подать голос
+     */
     @Override
     public void makeSound(){
-        System.out.println("Mau, Mau");
+        System.out.println(
+                String.format("%s say: %s", this.name, "Mau, Mau")
+        );
     };
     @Override
     public  String getName(){

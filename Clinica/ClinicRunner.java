@@ -3,7 +3,6 @@ package Clinica;
 /**
  * Работа клиники
  * ДЗ. Клиника
- Задания
  Создать программу для обслуживания клиники домашних питомцев.
  Должна быть возможно добавлять клиентов.
  Указывать какой питомец есть у клиента.
@@ -18,14 +17,19 @@ public class ClinicRunner {
 
     public static void main(String[] arg) {
         final Clinic clinic = new Clinic(10);
-        //Pet pet1 = new Pet("Sparky");
-        //Cat cat1 = new Cat("Digy");
-        //Dog dog1 = new Dog(pet1);
 
-        clinic.addClient(0, new Client("Brown", new Cat("Digy")));
 
-        clinic.addClient(1, new Client("Nick", new Dog(new Dog("Sparky"))));
 
-        clinic.addClient(2, new Client("Ann", new CatDog(new Cat("Digy"),new Dog(new Animal("Sparky")))));
+        Client[] client = new Client[]{
+            clinic.addClient(0, new Client("Brown", new Cat("Digy"))),
+
+            clinic.addClient(1, new Client("Nick", new Dog(new Dog("Sparky")))),
+
+            clinic.addClient(2, new Client("Ann", new CatDog(new Cat("Digy"),new Dog(new Animal("Sparky")))))
+        };
+
+        //for(int i = 0; i < client.length; i++) {
+            //client[i].getPetName();
+        //}
     }
 }

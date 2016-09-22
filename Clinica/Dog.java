@@ -11,22 +11,35 @@ public class Dog implements Pet{
      * Базовая реализация питомца
      */
     private Pet pet; //переменная для ссылки на объект реализующий интерфейс
+    /**
+     * Имя
+     */
     public String name;
 
-    //Dog(String name) {
-        //this.name = name;
-    //};
+    /**
+     * Конструктор
+     * @param name Имя животного
+     */
     public Dog(final String name){
         this.name = name;
     }
-
+    /**
+     * Конструктор
+     * @param pet ссылка на объект
+     */
     public Dog(final Pet pet) {
         this.pet = pet;
     };
+
+    /**
+     * Подать голос
+     */
     @Override
     public void makeSound(){
         this.pet.makeSound();
-        System.out.println("Gav, Gav");
+        System.out.println(
+                String.format("%s say: %s", this.name, "Gav, Gav")
+        );
     };
     @Override
     public  String getName(){

@@ -24,6 +24,10 @@ public class Clinic {
         this.clients[position] = client;
     }
 
+    /**
+     * Найти клиента
+     * @param name Имя животного
+     */
     public Client[] findClientByPetName(final String name) {
         //TODO
         return new Client[]{};
