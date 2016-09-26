@@ -23,7 +23,13 @@ public class Client {
      * Получить имя питомца
      **/
     public  String getPetName(){
-        return this.pet.getName();
+        if (this.pet.getName() != null)  {
+            return this.pet.getName();
+        }
+        else {
+            return "null";
+        }
+
     };
     /**
      * Получить имя Клиента

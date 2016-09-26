@@ -32,12 +32,11 @@ public class Clinic {
         Client[] result;
         result = new Client[1];
         for(int i = 0; i < this.clients.length; i++) {
-            //if (this.clients[i].getPetName() != null &&  (name).equals(this.clients[i].getPetName()))  {
-            if (1==1 )  {
-                //result[0] = this.clients[i];
-                System.out.println(
-                        String.format("%s Client: %s", this.clients[i].getClientId(), "%s pet: %s", this.clients[i].getPetName())
-                );
+            if (this.clients[i] != null && (name).equals(this.clients[i].getPetName()))  {
+                result[0] = this.clients[i];
+                //System.out.println("i="+i);
+                //System.out.println("name="+ this.clients[i].getPetName());
+                System.out.println("Client: "+ this.clients[i].getClientId()+ " pet: "+ this.clients[i].getPetName());
             };
         }
         return result;
