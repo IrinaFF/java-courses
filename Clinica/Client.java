@@ -19,7 +19,16 @@ public class Client {
         this.pet = pet;
     }
 
+    /**
+     * Получить имя питомца
+     **/
     public  String getPetName(){
         return this.pet.getName();
+    };
+    /**
+     * Получить имя Клиента
+     **/
+    public  String getClientId(){
+        return this.id;
     };
 }

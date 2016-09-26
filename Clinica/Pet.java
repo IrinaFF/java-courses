@@ -13,7 +13,7 @@ public interface Pet{
     public void makeSound();// {
     /**
      * Получить имя питомца
-     */
-        String getName();
+     * */
+    String getName();
 }
 

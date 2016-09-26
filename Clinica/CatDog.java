@@ -30,6 +30,6 @@ public class CatDog implements Pet {
      */
     @Override
     public  String getName(){
-        return String.format("%s say: %s", this.cat.getName(), this.dog.getName());
+        return String.format("%s + %s", this.cat.getName(), this.dog.getName());
     };
 }

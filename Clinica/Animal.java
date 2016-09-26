@@ -11,7 +11,7 @@ public class Animal implements Pet {
     /**
      * Имя
      */
-    public String name;
+    private final String name;
 
     /**
      * Конструктор
@@ -34,6 +34,6 @@ public class Animal implements Pet {
     };
     @Override
     public  String getName(){
-        return this.getName();
+        return this.name;
     };
 }

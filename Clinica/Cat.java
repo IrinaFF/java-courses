@@ -15,6 +15,7 @@ public class Cat implements Pet {
      **/
     public Cat(String name) {
         this.name = name;
+        //System.out.println("Cat: " + this.name);
     };
 
     /**
@@ -32,6 +33,9 @@ public class Cat implements Pet {
                 String.format("%s say: %s", this.name, "Mau, Mau")
         );
     };
+    /**
+     * Получить имя питомца
+     **/
     @Override
     public  String getName(){
         return this.name;
