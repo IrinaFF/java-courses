@@ -32,4 +32,16 @@ public class CatDog implements Pet {
     public  String getName(){
         return String.format("%s + %s", this.cat.getName(), this.dog.getName());
     };
+
+    /**
+     * Сменить имя питомца
+     * */
+    public void changeName(String nameCat, String nameDog) {
+        this.cat.changeName(nameCat);
+        this.dog.changeName(nameDog);
+    };
+
+    public void changeName(String nameCat) {
+        this.cat.changeName(nameCat);
+    };
 }

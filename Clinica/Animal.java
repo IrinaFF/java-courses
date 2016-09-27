@@ -11,7 +11,7 @@ public class Animal implements Pet {
     /**
      * Имя
      */
-    private final String name;
+    private String name;
 
     /**
      * Конструктор
@@ -35,5 +35,13 @@ public class Animal implements Pet {
     @Override
     public  String getName(){
         return this.name;
+    };
+
+    /**
+     * Сменить имя питомца
+     * */
+    @Override
+    public void changeName(String name) {
+        this.name = name;
     };
 }

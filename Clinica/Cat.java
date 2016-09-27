@@ -7,7 +7,7 @@ package Clinica;
  **/
 
 public class Cat implements Pet {
-    public final String name;
+    public String name;
 
     /**
      * Конструктор
@@ -39,6 +39,15 @@ public class Cat implements Pet {
     @Override
     public  String getName(){
         return this.name;
+    };
+
+    /**
+     * Сменить имя питомца
+     * */
+    @Override
+    public void changeName(String name) {
+        this.name = name;
+        System.out.println("Cat changeName: " + name);
     };
 
 }

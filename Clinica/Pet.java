@@ -15,5 +15,10 @@ public interface Pet{
      * Получить имя питомца
      * */
     String getName();
+
+    /**
+     * Сменить имя питомца
+     * */
+    public void changeName(String name);
 }
 

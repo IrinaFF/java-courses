@@ -6,8 +6,8 @@ package Clinica;
  * @since 17.09.2016
  */
 public class Client {
-    private final String id;
-    private final Pet pet;
+    private String id;
+    private Pet pet;
 
     /**
      * Конструктор
@@ -36,5 +36,20 @@ public class Client {
      **/
     public  String getClientId(){
         return this.id;
+    };
+
+    /**
+     * Изменить имя Клиента
+     **/
+    public  void changeName(String name){
+        this.id = name;
+    };
+
+    /**
+     * Сменить имя питомца
+     **/
+    public  void changeNamePet(String name){
+        this.pet.changeName(name);
+        System.out.println("Client changeNamePet: " + name);
     };
 }

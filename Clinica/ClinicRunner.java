@@ -4,10 +4,10 @@ package Clinica;
  * Работа клиники
  * ДЗ. Клиника
  Создать программу для обслуживания клиники домашних питомцев.
- Должна быть возможно добавлять клиентов.
+ +Должна быть возможно добавлять клиентов.
  Указывать какой питомец есть у клиента.
- Возможность искать по кличке питомца, по имени клиента.
- Редактировать имя клиента, имя питомца.
+ +Возможность искать по кличке питомца, по имени клиента.
+ +Редактировать имя клиента, имя питомца.
  Удалять клиента, питомца.
  Возможность валидации.
  * @autor irinaff
@@ -26,13 +26,17 @@ public class ClinicRunner {
         clinic.addClient(2, new Client("Ann", new CatDog(new Cat("Digy"),new Dog(new Animal("Sparky")))));
 
         client = clinic.findClientByPetName("Sparky");
-        Cat cat1 = new Cat("Digy");
-        Dog dog1 = new Dog("Sparky");
-        Dog dog2 = new Dog((new Animal("Sparky")));
-        CatDog catdog1 = new CatDog(cat1,dog1);
-        Client client1 =  new Client("Brown1", cat1);
-        Client client2 =  new Client("Brown2", dog2);
-        Client client3 =  new Client("Brown3", catdog1);
+        client = clinic.findClientByName("Brown");
+        clinic.changeClientName("Brown","Green");
+        clinic.changeClientPetName("Green","Big Digy");
+
+        //Cat cat1 = new Cat("Digy");
+        //Dog dog1 = new Dog("Sparky");
+        //Dog dog2 = new Dog((new Animal("Sparky")));
+        //CatDog catdog1 = new CatDog(cat1,dog1);
+        //Client client1 =  new Client("Brown1", cat1);
+        //Client client2 =  new Client("Brown2", dog2);
+        //Client client3 =  new Client("Brown3", catdog1);
         //if (cat1.getName() != null )  {
             //System.out.println("Cat name: "+cat1.getName());
         //}
