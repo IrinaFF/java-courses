@@ -29,7 +29,12 @@ public class InteractRunner {
                         calc.mult(Integer.valueOf(first), Integer.valueOf(second));
                         break;
                     case 4://"div":
-                        calc.div(Integer.valueOf(first), Integer.valueOf(second));
+                        try {
+                            calc.div(Integer.valueOf(first), Integer.valueOf(second));
+                        } catch (UserException e) {
+                            System.out.println(e.getMessage());
+                            System.out.println("Please enter two args");
+                        }
                         break;
                     case 5://"inv":
                         calc.inv(Integer.valueOf(first), Integer.valueOf(second));

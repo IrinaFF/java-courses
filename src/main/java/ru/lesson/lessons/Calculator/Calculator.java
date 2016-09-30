@@ -46,12 +46,20 @@ public class Calculator {
     }
     /**
      * Делим аргументы
-     * @param params Аргументы деления.
+     * @param args входящие аргументы
+     * @throws UserException если аргументов нет, вызываем исключение
      */
-    public void div(int ... params) {
-        this.result = params[0];
-        for (Integer m = 1;  m <= params.length - 1; m++) {
-            this.result /= params[m];
+    public void div(int ... args) throws UserException {
+        if (args.length > 0) {
+            this.result = args[0];
+            for (int m = 1;  m <= args.length - 1; m++) {
+                if (args[m] == 0) {
+                    throw new IllegalArgumentException("You try to div by 0. Please change arg!");
+                }
+                this.result /= args[m];
+            }
+        } else {
+            throw new UserException("You should enter two args!");
         }
     }
     /**
