@@ -26,22 +26,32 @@ public class Calculator {
     }
     /**
      * Вычитаем аргументы
-     * @param params Аргументы вычитания.
+     * @param args Аргументы вычитания.
      */
-    public void diff(int ... params) {
-        this.result = params[0];
-        for (Integer m = 1;  m <= params.length - 1; m++) {
-            this.result -= params[m];
+    public void diff(int ... args) throws UserException {
+        if (args.length > 0) {
+            this.result = args[0];
+            for (Integer m = 1;  m <= args.length - 1; m++) {
+                this.result -= args[m];
+            }
+        }
+        else {
+            throw new UserException("You should enter two args!");
         }
     }
     /**
      * Умножаем аргументы
-     * @param params Аргументы умножения.
+     * @param args Аргументы умножения.
      */
-    public void mult(int ... params) {
-        this.result = params[0];
-        for (Integer m = 1;  m <= params.length - 1; m++) {
-            this.result *= params[m];
+    public void mult(int ... args) throws UserException {
+        if (args.length > 0) {
+            this.result = args[0];
+            for (Integer m = 1;  m <= args.length - 1; m++) {
+                this.result *= args[m];
+            }
+        }
+        else {
+            throw new UserException("You should enter two args!");
         }
     }
     /**
@@ -64,14 +74,20 @@ public class Calculator {
     }
     /**
      * Возводим в степень аргументы
-     * @param params Аргументы возведения в степень.
+     * @param args Аргументы возведения в степень.
      */
-    public void inv(int ... params) {
-        this.result = params[0];
-        for (Integer m = 1;  m <= params.length - 1; m++) {
-            this.result = (int) (Math.pow(this.result, params[m]));
+    public void inv(int ... args) throws UserException {
+        this.result = args[0];
+        if (args.length > 0) {
+            for (Integer m = 1;  m <= args.length - 1; m++) {
+                this.result = (int) (Math.pow(this.result, args[m]));
+            }
         }
-    }
+        else {
+            throw new UserException("You should enter two args!");
+        }
+
+        }
     /**
      * Получить результат.
      * @return результат вычисления.

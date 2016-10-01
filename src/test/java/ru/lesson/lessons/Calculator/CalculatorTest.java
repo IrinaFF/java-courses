@@ -35,4 +35,18 @@ public class CalculatorTest {
         Calculator calculator = new Calculator();
         calculator.div(1,0);
     }
+
+    @Test()
+    public void testInv() throws UserException {
+        Calculator calculator = new Calculator();
+        calculator.inv(2, 3);
+        assertEquals(8, calculator.getResult());
+    }
+
+    @Test()
+    public void testDiff() throws UserException {
+        Calculator calculator = new Calculator();
+        calculator.diff(10, 3);
+        assertEquals(7, calculator.getResult());
+    }
 }

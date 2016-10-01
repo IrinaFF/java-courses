@@ -13,10 +13,20 @@ public class ArgRunner {
                 calc.add(Integer.valueOf(first), Integer.valueOf(second));
                 break;
             case 2://"diff":
-                calc.diff(Integer.valueOf(first), Integer.valueOf(second));
+                try {
+                    calc.diff(Integer.valueOf(first), Integer.valueOf(second));
+                } catch (UserException e) {
+                    System.out.println(e.getMessage());
+                    System.out.println("Please enter two args");
+                }
                 break;
             case 3://"mult":
-                calc.mult(Integer.valueOf(first), Integer.valueOf(second));
+                try {
+                    calc.mult(Integer.valueOf(first), Integer.valueOf(second));
+                } catch (UserException e) {
+                    System.out.println(e.getMessage());
+                    System.out.println("Please enter two args");
+                }
                 break;
             case 4://"div":
                 try {
@@ -27,7 +37,12 @@ public class ArgRunner {
                 }
                 break;
             case 5://"inv":
-                calc.inv(Integer.valueOf(first), Integer.valueOf(second));
+                try {
+                    calc.inv(Integer.valueOf(first), Integer.valueOf(second));
+                } catch (UserException e) {
+                    System.out.println(e.getMessage());
+                    System.out.println("Please enter two args");
+                }
                 break;
             default:
                 System.out.println("Operation not in: 1-add, 2-diff, 3-mult, 4-div,5-inv");
