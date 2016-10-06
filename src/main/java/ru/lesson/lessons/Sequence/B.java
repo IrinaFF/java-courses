@@ -5,5 +5,7 @@ package ru.lesson.lessons.Sequence;
  * @since 07.10.2016
  **/
 
-public class B {
+public class B extends A{
+    int i = 5;
+    int getI() {return i;}
 }

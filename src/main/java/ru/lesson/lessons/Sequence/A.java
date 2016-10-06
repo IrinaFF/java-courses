@@ -6,4 +6,6 @@ package ru.lesson.lessons.Sequence;
  **/
 
 public class A {
+    int i = 3;
+    int getI() {return i;}
 }
