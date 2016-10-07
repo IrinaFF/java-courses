@@ -3,17 +3,26 @@ package ru.lesson.lessons.Sequence;
 /**
  * @autor irinaff
  * @since 07.10.2016
- * http://atamanenko.blogspot.ru/2011/07/java.html
- * некоторые особенности переопределения методов в Java
  **/
+    /*
+    http://atamanenko.blogspot.ru/2011/07/java.html
+    некоторые особенности переопределения методов в Java
+    В java нельзя переопределить:
+    поля класса
+    конструкторы, инициализаторы класса
+    статические методы
+    статические поля
+    в java все нестатические неприватные (то есть, protected, package и public) методы являются виртуальными.
+    Ключевое слово final запрещает возможность дальнейшего переопределения метода в подклассах.
+     */
 
 public class Primer {
     public static void main(String[] arg) {
 
         /*
          public class A {
-         int i = 3;
-         int getI() {return i;}
+             int i = 3;
+             int getI() {return i;}
         }
 
         public class B extends A{
@@ -29,13 +38,13 @@ public class Primer {
         Соответственно, мы получим на выходе 5.
          */
         A a = new B();
-        System.out.println(a.i);
-        System.out.println(a.getI());
+        System.out.println("(1) " + a.i);
+        System.out.println("(2) " + a.getI());
 
         /*
-          public class A {
-         static int i = 3;
-         static int getI() {return i;}
+        public class A {
+            static int i = 3;
+            static int getI() {return i;}
         }
 
         public class B extends A{
@@ -44,9 +53,9 @@ public class Primer {
         }
         Статические поля и методы виртуальными не являются, поэтому оба вызова выведут нам 3.
          */
-        //A1 a1 = new B1();
-        //System.out.println(a1.i);
-        //System.out.println(a1.getI());
+        A1 a1 = new B1();
+        System.out.println("(3) " + a1.i);
+        System.out.println("(4) " + a1.getI());
     }
 }
 
