@@ -1,5 +1,9 @@
 package ru.lesson.lessons.Clinica;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Класс описывает клинику
  * @autor irinaff
@@ -9,10 +13,15 @@ public class Clinic {
     /**
     * Список клиентов
      **/
-    private final Client[] clients;
+    private Client[] clients;
+    private List<Client> clients1;// = new ArrayList<Client>();
 
     public Clinic(final int size) {
         this.clients = new Client[size];
+    }
+
+    public Clinic() {
+        this.clients1 =  new ArrayList<Client>();
     }
 
     /**
@@ -23,7 +32,24 @@ public class Clinic {
     public void addClient(final int position, final Client client) {
         this.clients[position] = client;
     }
+    //List<User> users = new ArrayList<User>();
+    //users.add(new User("1","first"));
+    public void addClient1(int position, final Client client) throws UserException {
+        if (position >= 0) {
+            this.clients1.add(position, client);
+        }
+        else {
+            throw new UserException("Cliens position can not be null or negativ!");
+        }
+    }
 
+    public void chowClient1() {
+        //this.clients1.add(position, client);
+        for (Client client : clients1) {
+            //System.out.println(client);
+            System.out.println("Client name: "+client.getClientId() + " Client pet name: "+client.getPetName() + " Pet type: " + client.getPetType());
+        }
+    }
     /**
      * Найти клиента
      * @param name Имя животного
@@ -83,4 +109,12 @@ public class Clinic {
             }
         }
     }
+
+//    @Override
+//    public String toString() {
+//        return "Clinic{" +
+//                "clients=" + Arrays.toString(clients) +
+//                ", clients1=" + clients1 +
+//                '}';
+//    }
 }

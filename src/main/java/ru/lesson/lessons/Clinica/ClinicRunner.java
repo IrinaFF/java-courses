@@ -16,19 +16,19 @@ package ru.lesson.lessons.Clinica;
 public class ClinicRunner {
 
     public static void main(String[] arg) {
-        final Clinic clinic = new Clinic(10);
-        Client client[] = new Client[1];
-
-        clinic.addClient(0, new Client("Brown", new Cat("Digy")));
-
-        clinic.addClient(1, new Client("Nick", new Dog(new Dog("Sparky"))));
-
-        clinic.addClient(2, new Client("Ann", new CatDog(new Cat("Digy"),new Dog(new Animal("Sparky")))));
-
-        client = clinic.findClientByPetName("Sparky");
-        client = clinic.findClientByName("Brown");
-        clinic.changeClientName("Brown","Green");
-        clinic.changeClientPetName("Green","Big Digy");
+//        final Clinic clinic = new Clinic(10);
+//        Client client[] = new Client[1];
+//
+//        clinic.addClient(0, new Client("Brown", new Cat("Digy")));
+//
+//        clinic.addClient(1, new Client("Nick", new Dog(new Dog("Sparky"))));
+//
+//        clinic.addClient(2, new Client("Ann", new CatDog(new Cat("Digy"),new Dog(new Animal("Sparky")))));
+//
+//        client = clinic.findClientByPetName("Sparky");
+//        client = clinic.findClientByName("Brown");
+//        clinic.changeClientName("Brown","Green");
+//        clinic.changeClientPetName("Green","Big Digy");
 
         //Cat cat1 = new Cat("Digy");
         //Dog dog1 = new Dog("Sparky");

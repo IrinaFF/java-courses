@@ -52,4 +52,19 @@ public class Client {
         this.pet.changeName(name);
         System.out.println("Client changeNamePet: " + name);
     };
+
+    /**
+            * Получить вид  питомца
+     **/
+    public  String getPetType(){
+        return String.valueOf(this.pet.getClass());
+    }
+
+//    @Override
+//    public String toString() {
+//        return "Client{" +
+//                "id='" + id + '\'' +
+//                ", pet=" + pet +
+//                '}';
+//    }
 }
