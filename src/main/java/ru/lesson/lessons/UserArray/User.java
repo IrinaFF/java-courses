@@ -1,4 +1,7 @@
-package ru.lesson.lessons.Calculator;
+package ru.lesson.lessons.UserArray;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @autor irinaff
@@ -49,4 +52,6 @@ public class User {
                 ", name='" + name + '\'' +
                 '}';
     }
+
+
 }
