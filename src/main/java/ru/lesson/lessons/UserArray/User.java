@@ -42,10 +42,11 @@ public class User {
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
-        System.out.println("User super.hashCode() : " + super.hashCode() +
-                "; hashCode() : " + result);
+        System.out.println("User hashCode() : " + result);
         return result;
         //дефолтная реализация
+        //System.out.println("User super.hashCode() : " + super.hashCode() +
+        //        "; hashCode() : " + result);
         //return super.hashCode();
     }
 

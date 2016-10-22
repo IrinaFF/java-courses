@@ -12,7 +12,15 @@ import static org.junit.Assert.*;
  **/
 
 public class CollectionModifyTest {
-
+    /**
+     * переопределенный equals вызывается
+     * переопределенный hashCode не вызывается
+     * не работает без переопределения equals и без переопределения hashCode
+     * работает c переопределением equals без переопределения hashCode
+     * не работает без переопределения equals и с переопределением hashCode
+     UserModify equals
+     UserModify equals
+     */
     @Test
     public void arrayContains() {
         System.out.println("UserModify arrayContains");
@@ -23,7 +31,16 @@ public class CollectionModifyTest {
         assertTrue(users.contains(new UserModify("1", "first", new User("1", "1"))));
     }
     /**
+     * переопределенный equals не вызывается
+     * переопределенный hashCode вызывается
      * Зависимость (@link java.util.Set#add) от методов hashCode equals
+     * работает без переопределения equals и без переопределения hashCode
+     * работает c переопределением equals без переопределения hashCode
+     * работает без переопределения equals и с переопределением hashCode
+     User hashCode() : 1568
+     UserModify hashCode() : -1274265247
+     User hashCode() : 1568
+     UserModify hashCode() : 1970146270
      */
     @Test
     public void setAdd() {
@@ -36,6 +53,18 @@ public class CollectionModifyTest {
     }
     /**
      * Зависимость (@link java.util.Map#put) от методов hashCode equals
+     * переопределенный equals вызывается
+     * переопределенный hashCode вызывается при сравнении
+     *  не работает без переопределения equals и без переопределения hashCode
+     *  не работает c переопределением equals без переопределения hashCode
+     *  не работает без переопределения equals и с переопределением hashCode
+     User hashCode() : 1568
+     UserModify hashCode() : -1274265247
+     User hashCode() : 1568
+     UserModify hashCode() : 1970146270
+     User hashCode() : 1568
+     UserModify hashCode() : -1274265247
+     UserModify equals
      */
     @Test
     public void mapPut() {
