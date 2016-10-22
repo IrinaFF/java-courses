@@ -27,6 +27,7 @@ public class User {
 
     @Override
     public boolean equals(Object o) {
+        System.out.println("User equals");
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
@@ -36,13 +37,16 @@ public class User {
         return name != null ? name.equals(user.name) : user.name == null;
 
     }
-
+    //реализация по нашей бизнес-логике уникальности индекса
     @Override
     public int hashCode() {
-//        int result = id != null ? id.hashCode() : 0;
-//        result = 31 * result + (name != null ? name.hashCode() : 0);
-//        return result;
-        return super.hashCode();
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        System.out.println("User super.hashCode() : " + super.hashCode() +
+                "; hashCode() : " + result);
+        return result;
+        //дефолтная реализация
+        //return super.hashCode();
     }
 
     @Override

@@ -1,7 +1,6 @@
 package ru.lesson.lessons.UserArray;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * TODO: comment
@@ -11,7 +10,7 @@ import java.util.Map;
 
 public class UserRunner {
     public static void main(String[] args){
-        /**
+
          List<User> users = new ArrayList<User>();
          users.add(new User("1","first"));
          users.add(new User("2","second"));
@@ -38,7 +37,7 @@ public class UserRunner {
          for (User user : users_s) {
          System.out.println(user);
          }
-         **/
+
         Map<String, User> users_m = new HashMap<String, User>();
         users_m.put("1", new User("1","first"));
         users_m.put("2", new User("2","second"));
