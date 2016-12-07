@@ -30,16 +30,16 @@ public class CounterTest {
     }
 
     private static final class Reader extends Thread {
-        private final Counter counter;
+        private final Counter counter1;
 
         public Reader(Counter counter) {
-            this.counter = counter;
+            this.counter1 = counter;
         }
 
         @Override
         public void run() {
             for (int i = 0; i != 100; ++i) {
-                System.out.println(String.format("%s : %s", Thread.currentThread().getId(), this.counter.increase()));
+                System.out.println(String.format("%s : %s", Thread.currentThread().getId(), this.counter1.increase()));
                 //System.out.println(String.format("%s : %s", Thread.currentThread().getId(), this.counter.getAmount()));
             }
         }
