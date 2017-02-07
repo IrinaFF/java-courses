@@ -1,6 +1,8 @@
 package syerraBeyts.glava_18.p_646;
 
 import java.rmi.*;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 
 /**
  * Полная версия кода клиента
@@ -24,7 +26,9 @@ public class MyRemoteClient {
         try {
             //ищем в реестре сервис с именем RemoteHello
             //реестр возвращает значение класса Object
-            MyRemote service = (MyRemote) Naming.lookup("rmi://127.0.0.1/RemoteHello");
+            Registry registry = LocateRegistry.getRegistry(null, 12345);
+            MyRemote service = (MyRemote)registry.lookup("Remote Hello");
+            //MyRemote service = (MyRemote) Naming.lookup("rmi://127.0.0.1/RemoteHello");
             String s = service.sayHello();
             System.out.println(s);
         }

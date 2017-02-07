@@ -1,10 +1,14 @@
 package syerraBeyts.glava_18.p_646;
 
 import java.rmi.*;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 import java.rmi.server.*;
 
 /**
  * Шаг второй: создаем реализацию удаленного интерфейса
+ * при запуске приложения указать программный аргумент
+ * -Djava.security.policy=server.policy
  * @autor irinaff
  * @since 06.02.2017
  **/
@@ -29,11 +33,15 @@ public class MyRemoteImpl extends UnicastRemoteObject implements MyRemote {
      с помощью статического метода rebind() из класса java.rmi.Naming
          */
     public static void main(String[] args) {
+
         //Заносим сервис в реестр RMI
         try {
             MyRemote service = new MyRemoteImpl();
-            //System.setProperty("java.rmi.server.hostname","192.168.88.45");
-            Naming.rebind("Remote Hello", service);
+            //делать не нужно, происходит при создании объекта с extends UnicastRemoteObject
+            //MyRemote stub = (MyRemote)UnicastRemoteObject.exportObject(service, 0);
+            Registry registry = LocateRegistry.createRegistry(12345);
+            registry.bind("Remote Hello", service);
+            //Naming.rebind("RemoteHello", service);
         }
         catch (Exception ex) {
             ex.printStackTrace();

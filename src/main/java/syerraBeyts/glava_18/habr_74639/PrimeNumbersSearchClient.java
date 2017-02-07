@@ -39,6 +39,13 @@ public class PrimeNumbersSearchClient implements PrimeChecker {
 
         System.out.println (number + ((isPrime) ? " is prime" : " is not prime"));
 
+        try {
+            Thread.sleep(100);
+        }
+        catch (InterruptedException ex) {
+            ex.printStackTrace();
+        }
+
         return isPrime;
     }
 
@@ -46,20 +53,16 @@ public class PrimeNumbersSearchClient implements PrimeChecker {
         PrimeNumbersSearchClient client = new PrimeNumbersSearchClient();
 
         try {
-            //
-            /*
-            Клиенту нужно получить серверный stub, чтобы зарегистрироваться
-            Находим удалённый регистратор и запрашиваем у него stub связанный с именем «ClientRegister».
-            Первый параметр LocateRegistry.getRegistry(null, 12345) — хост (null — localhost), второй — порт.
-             */
+            //Клиенту нужно получить серверный stub, чтобы зарегистрироваться
+            //Находим удалённый регистратор и запрашиваем у него stub связанный с именем «ClientRegister».
+            //Первый параметр LocateRegistry.getRegistry(null, 12345) — хост (null — localhost), второй — порт.
             Registry registry = LocateRegistry.getRegistry(null, 12345);
             ClientRegister server = (ClientRegister)registry.lookup("ClientRegister");
-            /*
-            Далее экспортируем клиентский удалённый объект и
-            передадим серверу stub (уже клиентский) — зарегистрируемся.
-            Сервер добавит клиента в очередь доступных checker'ов и начнёт передавать ему числа для проверки.
-            После проверки, если она завершилась без ошибок, клиент снова попадает в очередь и т.д.
-             */
+
+            //Далее экспортируем клиентский удалённый объект и
+            //передадим серверу stub (уже клиентский) — зарегистрируемся.
+            //Сервер добавит клиента в очередь доступных checker'ов и начнёт передавать ему числа для проверки.
+            //После проверки, если она завершилась без ошибок, клиент снова попадает в очередь и т.д.
             PrimeChecker stub = (PrimeChecker)UnicastRemoteObject.exportObject(client, 0);
             server.register(stub);
 

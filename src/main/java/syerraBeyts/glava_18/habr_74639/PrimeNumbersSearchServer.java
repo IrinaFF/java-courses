@@ -42,6 +42,7 @@ public class PrimeNumbersSearchServer implements ClientRegister {
                                 System.out.println (numberToCkeck);
                             }
                             availableCheckers.add (checker);
+                            System.out.println ("size: " + availableCheckers.size());
                         } catch (RemoteException e) {
                             System.out.println ("Client disconnected or unknown error occured");
                         }
@@ -63,9 +64,20 @@ public class PrimeNumbersSearchServer implements ClientRegister {
         PrimeNumbersSearchServer server = new PrimeNumbersSearchServer();
 
         try {
+            //Экспортируем удалённый объект и получаем stub,
+            // посредством которого клиент будет вызывать методы нашего объекта.
+            //Второй параметр exportObject — порт,
+            // который будет использоваться для соеденения с удалённым объектом
+            //0 — выбор любого свободного порта.
             ClientRegister stub = (ClientRegister)UnicastRemoteObject.exportObject(server, 0);
-
+            //stub нужно передать клиенту. Тут возможны совершенно разные варианты.
+            //Можно даже передать stub клиенту на дискете 3.5''
+            //Мы воспользуемся RMI-регистратором. Его можно как создать внутри нашей vm,
+            // так и использовать «внешний», представляемый утилитой rmiregistry.
+            //использовал первый вариант
             Registry registry = LocateRegistry.createRegistry(12345);
+            //Создаём регистратор и связываем наш stub с именем ClientRegister
+            //Регистратор будет принимать соеденения на 12345 порту
             registry.bind("ClientRegister", stub);
 
             server.startSearch();
