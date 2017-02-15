@@ -2,6 +2,7 @@ package oracleDocs.thread.GuardedBlocks;
 
 /**
  * Created by Irina on 16.02.2017.
+ * The Drop class was written in order to demonstrate guarded blocks.
  * Producer-Consumer application. This kind of application shares data between two threads:
  * the producer, that creates the data,
  * and the consumer, that does something with it.
