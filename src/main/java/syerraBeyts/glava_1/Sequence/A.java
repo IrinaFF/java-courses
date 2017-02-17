@@ -1,4 +1,4 @@
-package ru.lesson.lessons.Sequence;
+package syerraBeyts.glava_1.Sequence;
 
 /**
  * @autor irinaff

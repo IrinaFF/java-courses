@@ -1,4 +1,4 @@
-package MathAnalysis;
+package syerraBeyts.glava_1.MathAnalysis;
 
 /**
  * функциональный ряд
