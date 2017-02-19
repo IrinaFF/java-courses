@@ -10,6 +10,7 @@ package ru.lesson.lessons.lesson_12;
 public class Counter {
     private int amount;
 
+    //public int increase () {
     public synchronized int increase () {
         amount++;
         return amount;
@@ -20,5 +21,5 @@ public class Counter {
     }
 
     //так не стоит делать, т.к. лочится весь класс
-    //public static void echo () {}
+    public static synchronized void echo () {}
 }

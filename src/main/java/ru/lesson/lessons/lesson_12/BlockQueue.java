@@ -8,6 +8,7 @@ import java.util.LinkedList;
  * @since 22.10.2016
  **/
 
+//public class BlockQueue<T> {
 public class BlockQueue<T> {
     //реализация линкед-листа может работать в качестве очереди
     //эта реализация не синхронизарована, не дает гарантию работы автономности

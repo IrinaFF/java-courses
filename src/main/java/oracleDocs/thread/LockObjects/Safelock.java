@@ -28,7 +28,9 @@ public class Safelock {
             Boolean yourLock = false;
             try {
                 myLock = lock.tryLock();
+                System.out.println("myLock " + myLock);
                 yourLock = bower.lock.tryLock();
+                System.out.println("yourLock " + myLock);
             } finally {
                 if (! (myLock && yourLock)) {
                     if (myLock) {
@@ -44,28 +46,32 @@ public class Safelock {
 
         public void bow(Friend bower) {
             if (impendingBow(bower)) {
+                System.out.println("получили обе блокировки");
                 try {
-                    System.out.format("%s: %s has"
-                                    + " bowed to me!%n",
-                            this.name, bower.getName());
+                    //System.out.format("%s: %s has"
+                                    //+ " bowed to me!%n",
+                            //this.name, bower.getName());
+                    System.out.println(" туда bow от " + this.name +  " кому " + bower.getName());
                     bower.bowBack(this);
                 } finally {
                     lock.unlock();
                     bower.lock.unlock();
                 }
             } else {
-                System.out.format("%s: %s started"
-                                + " to bow to me, but saw that"
-                                + " I was already bowing to"
-                                + " him.%n",
-                        this.name, bower.getName());
+                //System.out.format("%s: %s started"
+                                //+ " to bow to me, but saw that"
+                                //+ " I was already bowing to"
+                                //+ " him.%n",
+                        //this.name, bower.getName());
+                System.out.println("bow  else от " + this.name +  " кому " + bower.getName());
             }
         }
 
         public void bowBack(Friend bower) {
-            System.out.format("%s: %s has" +
-                            " bowed back to me!%n",
-                    this.name, bower.getName());
+            //System.out.format("%s: %s has" +
+                           // " bowed back to me!%n",
+                    //this.name, bower.getName());
+            System.out.println("обратно bowBack от " + this.name +  " кому " + bower.getName());
         }
     }
 
@@ -80,9 +86,10 @@ public class Safelock {
 
         public void run() {
             Random random = new Random();
-            for (;;) {
+            for (int i =0;  i< 5; i++) {
+                System.out.println("i = " + i);
                 try {
-                    Thread.sleep(random.nextInt(10));
+                    Thread.sleep(random.nextInt(1000));
                 } catch (InterruptedException e) {}
                 bowee.bow(bower);
             }
@@ -91,10 +98,8 @@ public class Safelock {
 
 
     public static void main(String[] args) {
-        final Friend alphonse =
-                new Friend("Alphonse");
-        final Friend gaston =
-                new Friend("Gaston");
+        final Friend alphonse = new Friend("Alphonse");
+        final Friend gaston =   new Friend("Gaston");
         new Thread(new BowLoop(alphonse, gaston)).start();
         new Thread(new BowLoop(gaston, alphonse)).start();
     }
