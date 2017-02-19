@@ -19,9 +19,10 @@ public class CounterTest {
     public void increase() throws InterruptedException {
         final Counter counter = new Counter();
         final List<Reader> readers = Arrays.asList(
-                new Reader(counter), new Reader(counter), new Reader(counter), new Reader(counter), new Reader(counter), new Reader(counter),
-                new Reader(counter), new Reader(counter), new Reader(counter), new Reader(counter), new Reader(counter), new Reader(counter)
-        );
+                new Reader(counter), new Reader(counter), new Reader(counter),
+                new Reader(counter), new Reader(counter), new Reader(counter),
+                new Reader(counter), new Reader(counter), new Reader(counter),
+                new Reader(counter), new Reader(counter), new Reader(counter));
         for (final Reader reader : readers) {
             reader.start();
         }
