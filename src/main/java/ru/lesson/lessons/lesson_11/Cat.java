@@ -6,48 +6,38 @@ package ru.lesson.lessons.lesson_11;
  * @since 17.09.2016
  **/
 
-public class Cat implements Pet {
-    public String name;
+public class Cat extends Animal implements Pet {
+    private String name;
+    private Pet pet;
 
-    /**
-     * Конструктор
-     * @param name Имя животного
-     **/
-    public Cat(String name) {
+    //Конструктор
+    //@param name Имя животного
+    public Cat (String name) {
+        super(name);
         this.name = name;
         //System.out.println("Cat: " + this.name);
     };
 
-    /**
-     * Поймать мышь
-     **/
-    public void catchMouth() {
-    }
-
-    /**
-     * Подать голос
-     */
-    //@Override
+    //Подать голос
+    @Override
     public void makeSound(){
         System.out.println(
                 String.format("%s say: %s", this.name, "Mau, Mau")
         );
     };
-    /**
-     * Получить имя питомца
-     **/
-    //@Override
-    public  String getName(){
-        return this.name;
-    };
 
-    /**
-     * Сменить имя питомца
-     * */
-    //@Override
+    //Получить имя питомца
+    //public  String getName(){ return this.name;    };
+
+    //Сменить имя питомца
+    /*
     public void changeName(String name) {
         this.name = name;
         System.out.println("Cat changeName: " + name);
     };
+    */
 
+    //Поймать мышь
+    public void catchMouth() {
+    }
 }

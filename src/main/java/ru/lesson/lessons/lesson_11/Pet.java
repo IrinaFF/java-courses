@@ -7,18 +7,13 @@ package ru.lesson.lessons.lesson_11;
 
 public interface Pet{
 
-    /**
-     * Издавать звук
-     */
-    public void makeSound();// {
-    /**
-     * Получить имя питомца
-     * */
+    //Издавать звук
+    public void makeSound();
+
+    //Получить имя питомца
     String getName();
 
-    /**
-     * Сменить имя питомца
-     * */
+    //Сменить имя питомца
     public void changeName(String name);
 }
 

@@ -9,9 +9,7 @@ import java.util.List;
  * @since 17.09.2016
  */
 public class Clinic {
-    /**
-    * Список клиентов
-     **/
+    //Список клиентов
     private Client[] clients;
     private List<Client> clients1;// = new ArrayList<Client>();
 
@@ -23,17 +21,15 @@ public class Clinic {
         this.clients1 =  new ArrayList<Client>();
     }
 
-    /**
-     * Добавить клиента
-     * @param position Позиция
-     * @param client Клиент
-     */
+    //Добавить клиента: Позиция, Клиент
     public void addClient(final int position, final Client client) {
         this.clients[position] = client;
     }
+
     //List<User> users = new ArrayList<User>();
     //users.add(new User("1","first"));
-    public void addClient1(int position, final Client client) throws UserException {
+    public void addClient1(int position, final Client client)
+            throws UserException {
         if (position >= 0) {
             this.clients1.add(position, client);
         }
@@ -46,29 +42,26 @@ public class Clinic {
         //this.clients1.add(position, client);
         for (Client client : clients1) {
             //System.out.println(client);
-            System.out.println("Client name: "+client.getClientId() + " Client pet name: "+client.getPetName() + " Pet type: " + client.getPetType());
+            System.out.println("Client name: " + client.getClientId() +
+                    " Client pet name: "+client.getPetName() +
+                    " Pet type: " + client.getPetType());
         }
     }
-    /**
-     * Найти клиента
-     * @param name Имя животного
-     */
+    //Найти клиента по имени животного
     public Client[] findClientByPetName(final String name) {
         Client[] result;
         result = new Client[1];
         for(int i = 0; i < this.clients.length; i++) {
             if (this.clients[i] != null && (name).equals(this.clients[i].getPetName()))  {
                 result[0] = this.clients[i];
-                System.out.println("findClientByPetName Client: "+ this.clients[i].getClientId()+ " pet: "+ this.clients[i].getPetName());
+                System.out.println("findClientByPetName Client: "+ this.clients[i].getClientId() +
+                        " pet: "+ this.clients[i].getPetName());
             };
         }
         return result;
     }
 
-    /**
-     * Найти клиента
-     * @param name Имя клиента
-     */
+    //Найти клиента по имени клиента
     public Client[] findClientByName(final String name) {
         Client[] result;
         result = new Client[1];
@@ -81,11 +74,7 @@ public class Clinic {
         return result;
     }
 
-    /**
-     * Изменить имя клиента
-     * @param name Имя клиента
-     * @param name Новое имя клиента
-     */
+    //Изменить имя клиента: Имя клиента, Новое имя клиента
     public void changeClientName(final String name, String newName) {
         for (int i = 0; i < this.clients.length; i++) {
             if (this.clients[i] != null && (name).equals(this.clients[i].getClientId())) {
@@ -95,11 +84,7 @@ public class Clinic {
         }
     }
 
-    /**
-     * Сменить питомца
-     * @param nameClient Имя клиента
-     * @param namePet Имя питомца
-     */
+    //Сменить питомца клиенту: Имя клиента, Имя питомца
     public void changeClientPetName(final String nameClient, String namePet) {
         for (int i = 0; i < this.clients.length; i++) {
             if (this.clients[i] != null && (nameClient).equals(this.clients[i].getClientId())) {

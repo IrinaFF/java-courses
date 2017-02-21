@@ -7,41 +7,31 @@ package ru.lesson.lessons.lesson_11;
  **/
 
 public class CatDog implements Pet {
-    private Pet cat; //переменная для ссылки на объект реализующий интерфейс
-    private Pet dog; //переменная для ссылки на объект реализующий интерфейс
+    private Cat cat; //переменная для ссылки на объект реализующий интерфейс
+    private Dog dog; //переменная для ссылки на объект реализующий интерфейс
 
-    public CatDog(Pet cat, Pet dog) {
+    public CatDog(Cat cat, Dog dog) {
         this.cat = cat;
         this.dog = dog;
     };
 
-    /**
-     * {@inheritDoc}
-     * @return
-     */
-    //@Override
-    public void makeSound(){
+     public void makeSound(){
         this.cat.makeSound();
         this.dog.makeSound();
     };
-    /**
-     * {@inheritDoc}
-     * @return
-     */
-    //@Override
     public  String getName(){
-        return String.format("%s + %s", this.cat.getName(), this.dog.getName());
+        return String.format("%s + %s",
+                this.cat.getName(), this.dog.getName());
     };
 
-    /**
-     * Сменить имя питомца
-     * */
+    public void changeName(String name) {
+        this.cat.changeName(name);
+        this.dog.changeName(name);
+    };
+
+    //Сменить имя питомца
     public void changeName(String nameCat, String nameDog) {
-        this.cat.changeName(nameCat);
-        this.dog.changeName(nameDog);
-    };
-
-    public void changeName(String nameCat) {
-        this.cat.changeName(nameCat);
+    this.cat.changeName(nameCat);
+    this.dog.changeName(nameDog);
     };
 }
