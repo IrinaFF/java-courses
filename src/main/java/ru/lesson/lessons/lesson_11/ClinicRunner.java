@@ -8,36 +8,61 @@ package ru.lesson.lessons.lesson_11;
 public class ClinicRunner {
 
     public static void main(String[] arg) {
-        final Clinic clinic = new Clinic(10);
-        Client client[] = new Client[1];
+        int clinicsize = 10;
+        final Clinic clinic = new Clinic(clinicsize);
+        Client client;
+        //Возможность добавлять клиента
+        clinic.addClient(0, new Client("Brown-0", new Cat("Digy")));
+        clinic.addClient(1, new Client("Nick-1", new Dog(new Dog("Sparky"))));
+        clinic.addClient(2, new Client("Ann-2", new CatDog(new Cat("Digy"), new Dog(new Animal("Sparky")))));
 
-        clinic.addClient(0, new Client("Brown", new Cat("Digy")));
+        Cat cat = new Cat("Digy");
+        client =  new Client("Brown-3", cat);
+        clinic.addClient(3, client);
 
-        clinic.addClient(1, new Client("Nick", new Dog(new Dog("Sparky"))));
+        Dog dog = new Dog("Sparky");
+        client =  new Client("Brown-4", cat);
+        clinic.addClient(4, client);
 
-        clinic.addClient(2, new Client("Ann", new CatDog(new Cat("Digy"), new Dog(new Animal("Sparky")))));
+        dog = new Dog((new Animal("Sparkys")));
+        client =  new Client("Brown2", dog);
+        clinic.addClient(5, client);
 
+        CatDog catdog = new CatDog(cat,dog);
+        client =  new Client("Brown3", catdog);
+        clinic.addClient(6, client);
+
+        clinic.addClient(7, new Client("Brown-7"));
+        clinic.addClient(8, new Client("Brown-8"));
+        clinic.addClient(9, new Client("Brown-9"));
+
+        //Указывать какой питомец есть у клиента
+        clinic.addClientPet("Brown-7", new Cat("Fru"));
+        clinic.addClientPet("Brown-8", new Cat("Fru-fru"));
+        clinic.addClientPet("Brown-9", new Dog("Gart"));
+
+        //Возможность искать клиента по кличке питомца
         client = clinic.findClientByPetName("Sparky");
+
+        //Возможность искать по имени клиента
         client = clinic.findClientByName("Brown");
+
+        //Редактировать имя клиента
         clinic.changeClientName("Brown","Green");
+
+        //Редактировать имя питомца
         clinic.changeClientPetName("Green","Big Digy");
 
-        Cat cat1 = new Cat("Digy");
-        Dog dog1 = new Dog("Sparky");
-        Dog dog2 = new Dog((new Animal("Sparky")));
-        CatDog catdog1 = new CatDog(cat1,dog1);
-        Client client1 =  new Client("Brown1", cat1);
-        Client client2 =  new Client("Brown2", dog2);
-        Client client3 =  new Client("Brown3", catdog1);
-        //if (cat1.getName() != null )  {
-            //System.out.println("Cat name: "+cat1.getName());
-        //}
-        System.out.println("Catdog name: "+catdog1.getName());
-        System.out.println("Dog name: "+dog2.getName());
-        System.out.println("Client name:"+client1.getClientId());
-        System.out.println("Client1 pet name: "+client1.getPetName());
-        System.out.println("Client2 pet name: "+client2.getPetName());
-        System.out.println("Client3 pet name: "+client3.getPetName());
+        //Удалять клиента
+        clinic.deleteClient("Brown-8");
 
+        //Удалять питомца
+        clinic.deleteClientPet("Brown-9");
+
+        for (int i = 0; i < clinicsize; i++) {
+            System.out.println(clinic.getNameClient(i)+ " " +
+                    clinic.getTypePetClient(i)+ " " +
+                    clinic.getNamePetClient(i));
+        }
     }
 }

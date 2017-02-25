@@ -33,15 +33,15 @@ public class UserModify {
     @Override
     public boolean equals(Object o) {
         System.out.println("UserModify equals");
-        return super.equals(o);
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//
-//        UserModify that = (UserModify) o;
-//
-//        if (idMod != null ? !idMod.equals(that.idMod) : that.idMod != null) return false;
-//        if (nameMod != null ? !nameMod.equals(that.nameMod) : that.nameMod != null) return false;
-//        return user != null ? user.equals(that.user) : that.user == null;
+        //return super.equals(o);
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        UserModify that = (UserModify) o;
+
+        if (idMod != null ? !idMod.equals(that.idMod) : that.idMod != null) return false;
+        if (nameMod != null ? !nameMod.equals(that.nameMod) : that.nameMod != null) return false;
+        return user != null ? user.equals(that.user) : that.user == null;
     }
 
     @Override

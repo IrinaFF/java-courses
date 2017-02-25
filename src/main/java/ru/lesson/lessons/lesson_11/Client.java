@@ -22,35 +22,37 @@ public class Client {
         this.id = id;
     }
 
-    //Получить имя питомца
+    //Получить кличку питомца
     public  String getPetName(){
-        if (this.pet.getName() != null)  {
+        if (this.pet != null) {
             return this.pet.getName();
         }
-        else {
-            return "null";
+        else { return "null"; }
+    }
+
+    //Получить вид  питомца
+    public  String getPetType(){
+        if (this.pet != null) {
+            return String.valueOf(this.pet.getClass().getSimpleName());//.getEnclosingClass()
         }
-    };
-    //Получить id-имя Клиента
+        else { return "null"; }
+    }
+
+    //Получить id-Имя Клиента
     public  String getClientId(){
         return this.id;
     };
 
-    //Изменить имя Клиента
+    //Редактировать имя Клиента
     public  void changeName(String name){
         this.id = name;
     };
 
-    //Сменить имя питомца
+    //Редактировать имя питомца
     public  void changeNamePet(String name){
         this.pet.changeName(name);
         System.out.println("Client changeNamePet: " + name);
     };
-
-    //Получить вид  питомца
-    public  String getPetType(){
-        return String.valueOf(this.pet.getClass());
-    }
 
     //Указать питомца
     public  void addPet(Pet pet){
@@ -58,11 +60,9 @@ public class Client {
         System.out.println("Client addPet: " + pet.getName());
     };
 
-//    @Override
-//    public String toString() {
-//        return "Client{" +
-//                "id='" + id + '\'' +
-//                ", pet=" + pet +
-//                '}';
-//    }
+    //Удалить питомца
+    public  void deletePet(){
+        this.pet = null;
+        System.out.println("Client deletePet" );
+    };
 }
