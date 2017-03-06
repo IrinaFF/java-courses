@@ -1,6 +1,6 @@
 package ru.lesson.lessons.lesson_12v2;
 
-import ru.lesson.lessons.UserArray.User;
+import ru.lesson.lessons.lesson_10.User;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
