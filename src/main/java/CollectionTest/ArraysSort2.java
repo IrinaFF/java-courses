@@ -1,4 +1,4 @@
-package CollectionTest.Array;
+package CollectionTest;
 
 import java.util.Arrays;
 
@@ -13,7 +13,7 @@ import java.util.Arrays;
  * минимальный элемент, меняем его местами уже со вторым элементом в массиве. И так далее.
  **/
 
-public class ArraySort2 {
+public class ArraysSort2 {
     public static void main(String[] args) {
         int[] a = {2, 9, 1, 4, 3, 5, 2};
         System.out.println(Arrays.toString(a));
