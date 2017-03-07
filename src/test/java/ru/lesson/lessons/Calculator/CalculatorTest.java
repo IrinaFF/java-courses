@@ -1,4 +1,4 @@
-package ru.lesson.lessons.Calculator;
+package ru.lesson.lessons.lesson_4;
 
 import org.junit.Test;
 

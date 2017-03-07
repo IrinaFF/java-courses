@@ -1,4 +1,4 @@
-package ru.lesson.lessons.UserArray;
+package ru.lesson.lessons.lesson_10;
 
 import org.junit.Test;
 

@@ -1,7 +1,7 @@
 package ru.lesson.lessons.lesson_12;
 
 import org.junit.Test;
-import ru.lesson.lessons.UserArray.User;
+import ru.lesson.lessons.lesson_10.User;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
