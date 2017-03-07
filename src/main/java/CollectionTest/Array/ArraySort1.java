@@ -14,7 +14,7 @@ import java.util.Arrays;
  * @since 23.02.2017
  **/
 
-public class ArraySort {
+public class ArraySort1 {
     public static void main(String[] args) {
         int[] a = {2, 9, 1, 4, 3, 5, 2};
         System.out.println(Arrays.toString(a));
