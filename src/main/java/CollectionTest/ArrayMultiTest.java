@@ -83,16 +83,16 @@ public class ArrayMultiTest {
         //Сначала мы поставили скобки у типа переменной, а потом у имени переменной. При этом мы использовали в качестве имени имя класса Integer.
         //Однако, Java догадывается, что на этот раз используется не класс, а имя и разрешает такой синтаксис. Но лучше так не выпендриваться.
         Integer[] Integer[] = {{1, 2, 3}, {4, 0, 0,},};
-        System.out.println(Arrays.deepToString(Integer));
+        log.info(Arrays.deepToString(Integer));
 
         //размер двумерного массива измеряется интересным способом.
         // Длина массива определяется по его первой размерности, то есть вычисляется количество рядов.
         int[][] matrix = new int[4][5];
-        System.out.println("matrix: " + matrix.length);
+        log.info("matrix: " + matrix.length);
         //А если мы хотим узнать количество столбцов в ряду? Тогда указываете ряд, а затем вычисляете у него количество столбцов.
         //число колонок у третьего ряда
         //в массивах ряды могут содержать разное количество столбцов
-        System.out.println("matrix[2]: " + matrix[2].length);
+        log.info("matrix[2]: " + matrix[2].length);
 
         //Сложить два массива
         //Предположим, у вас есть два массива, и вам нужно их соединить и получить общий массив.
@@ -100,24 +100,24 @@ public class ArrayMultiTest {
         String[] week2 = new String[] { "Четверг", "Котопятница", "Субкота",
                 "Воскресенье" };
         String[] week = concatArray(week1, week2); // будет возвращён массив всех семи дней недели
-        System.out.println(Arrays.toString(week));
+        log.info(Arrays.toString(week));
 
         //Взять часть массива
         double[] digits = new double[] {6.5, 3.1, 5.72};
         double[] part = copyPartArray(digits, 1);
-        System.out.println(Arrays.toString(part));
+        log.info(Arrays.toString(part));
 
         String[] weekday = new String[] { "Понедельник", "Вторник", "Среда" };
 
         // нам нужен массив со второго элемента
         String[] weeks = copyPartArray(weekday, 1); // вернёт Вторник и Среда
         // выводим второй элемент из полученного массива, т.е. Среда
-        System.out.println(Arrays.toString(weeks));
+        log.info(Arrays.toString(weeks));
 
         // создадим массив и перемешаем его
         int[] mSolutionArray = { 0};//, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 };
         shuffleArray(mSolutionArray);
-        System.out.println(Arrays.toString(mSolutionArray));
+        log.info(Arrays.toString(mSolutionArray));
 
         log.info(Arrays.toString(mSolutionArray));
 
@@ -130,9 +130,86 @@ public class ArrayMultiTest {
         // Применим метод. Ищем по буквам "мур":
 
         List<String> words = searchFromStart(catNamesArray, "мур");
-        log.info("Поиск элементов: "+Arrays.toString(words.toArray()));
+        log.info("Поиск элементов: " + Arrays.toString(words.toArray()));
+
+        //Сортировка массива
+        // задаём числа в случайном порядке
+        int[] numbers = new int[]{1, 23, 3, 8, 2, 4, 4};
+        // сортируем
+        Arrays.sort(numbers);
+        // проверяем
+        log.info(Arrays.toString(numbers));
+        //У метода sort() есть перегруженные версии, где можно указать диапазон массива, в пределах которого следует произвести сортировку
+
+        //Копирование массивов
+        //Метод Arrays.copyOf(оригинальный_массив, новая_длина) — возвращает массив-копию новой длины.
+        //Если новая длина меньше оригинальной, то массив усекается до этой длины, а если больше, то дополняется нулями.
+        // первый массив
+        int[] anyNumbers = {2, 8, 11};
+        // копия второго массива
+        int[] luckyNumbers = Arrays.copyOf(anyNumbers, anyNumbers.length);
+        luckyNumbers[2] = 25;
+        log.info("anyNumbers: " + Arrays.toString(anyNumbers)
+                + "\nluckyNumbers: " + Arrays.toString(luckyNumbers));
+
+        //Можно создать увеличенную копию, когда копируются все значения из маленького массива,
+        // а оставшиеся места заполняются начальными значениями, например, нулями.
+        // три элемента
+        int[] small_array = {1, 2, 3};
+        // создадим массив с пятью элементами
+        int[] big_array = Arrays.copyOf(small_array, 5);
+        log.info("big_array: " + Arrays.toString(big_array));
+
+        //Метод Arrays.copyOfRange(оригинальный_массив, начальный_индекс, конечный_индекс) —
+        // также возвращает массив-копию новой длины, при этом копируется часть оригинального массива от начального индекса до конечного –1.
+        // Массив из четырех элементов
+        String[] array_1 = {
+                "Васька",
+                "Мурзик",
+                "Рыжик",
+                "Барсик"};
+        // Сортировка массива
+        Arrays.sort(array_1);
+        // Копируем первые три элемента массива во второй массив
+        String[] array_2 = Arrays.copyOf(array_1, 3);
+// Копируем нужные элементы из первого массива
+// в диапазоне от второго элемента до последнего в третий массив
+        String[] array_3 = Arrays.copyOfRange(array_1,
+                2, array_1.length);
+
+        log.info(Arrays.toString(array_1));
+        log.info(Arrays.toString(array_2));
+        log.info(Arrays.toString(array_3));
+
+        //Метод Arrays.fill() - наполнение массива одинаковыми данными
+        //Метод Arrays.fill() позволяет быстро заполнить массив одинаковыми значениями.
+        // У метода есть восемнадцать перегруженных версий для разных типов и объектов.
+//Метод fill() просто дублирует одно заданное значение в каждом элементе массива (в случае объектов копирует одну ссылку в каждый элемент):
+        int size = 4;
+        boolean[] test1 = new boolean[size];
+        int[] test2 = new int[size];
+        String[] test3 = new String[size];
+        Arrays.fill(test1, true); // присваивем всем true
+        log.info(Arrays.toString(test1));
+        Arrays.fill(test2, 9); // присваиваем всем 9
+        log.info(Arrays.toString(test2));
+        Arrays.fill(test3, "Мяу!"); // Ну вы поняли
+        log.info(Arrays.toString(test3));
+
+        //Метод equals() - сравнение массивов
+        //Класс Arrays содержит метод equals() для проверки на равенство целых массивов.
+        // Чтобы два массива считались равными, они должны содержать одинаковое количество элементов,
+        // и каждый элемент должен быть эквивалентен соответствующему элементу другого массива.
+// Создаем два массива
+        int[] a1 = new int[10];
+        int[] a2 = new int[10];
+// заполняем их девятками
+        Arrays.fill(a1, 9);
+        Arrays.fill(a2, 9);
+        log.info("Сравним: " + Arrays.equals(a1, a2));
 
     }
+
     //метод для склеивания двух double массивов
     static private double[] concatArray(double[] a, double[] b) {
         if (a == null)
