@@ -235,11 +235,11 @@ public class StringTest {
         // Часто используется при экспорте строк из различных источников, где используются другие символы Unicode.
         // Например, Java по умолчанию работает с 16-битовые символы Unicode, а в интернете часто строки используют 8-битовый код Unicode, ASCII и др.
         String unusualCat = "Котёнок по имени Гав";
-        int start = 5;
+        int start = 0;
         int end = 12;
         byte [] buf = new byte[end - start];
         unusualCat.getBytes(start, end, buf, 0);
-        System.out.println(new String(buf));
+        System.out.println("getBytes: " + new String(buf));
 
         //public void getChars(int start, int end, char[] buffer, int index)
         // Метод для извлечения нескольких символов из строки. Вам надо указать индекс начала подстроки (start),
@@ -253,7 +253,47 @@ public class StringTest {
         end = 12;
         char[] buf1 = new char[end - start];
         unusualCat.getChars(start, end, buf1, 0);
-        System.out.println(new String(buf1));
+        System.out.println("getChars: " + new String(buf1));
 
+        //public int hashCode()
+        // Возвращает целое число — хэш-код для данного объекта.
+        System.out.println("hashCode: " + unusualCat.hashCode());
+
+        //public int indexOf(int c)
+        // Возвращает номер первой встречной позиции с указанным индексом с.
+        testString = "котёнок";
+        // символ ё встречается в четвёртой позиции (index = 3)
+        System.out.println("indexOf: " + String.valueOf(testString.indexOf("ё")));
+
+        //public int indexOf (int c, int start)
+        // Ищет индекс с, начиная с позиции start
+        testString = "котёнок";
+        // вернёт -1, так как после 5 символа буквы ё нет
+        System.out.println("indexOf: " + String.valueOf(testString.indexOf("ё", 4)));
+
+        //public int indexOf (String string)
+        // Ищет цепочку символов subString
+        testString = "У окошка";
+        System.out.println("indexOf: " + String.valueOf(testString.indexOf("кошка")));
+
+        //public int indexOf (String subString, int start)
+        // Ищет цепочку символов subString, начиная с позиции start
+        testString = "У окошка";
+        System.out.println("indexOf: " + String.valueOf(testString.indexOf("кошка", 2)));
+
+        //public String intern () «Xэширует» строку
+        System.out.println(("Vas" + "ya").intern());
+
+        System.out.println("offsetByCodePoints:" + testString.offsetByCodePoints (1,5));
+
+        String s1 = new String();
+        System.out.println("new String(): " + s1.toString());
+
+        //В Java используется пул строковых литералов. Одинаковые строковые литералы всегда ссылаются на один и тот же экземпляр класса String :
+        String vasya = "Vasya", ya = "ya";
+        System.out.println(vasya == "Vasya"); // 1
+        System.out.println(vasya == ("Vas" + ya)); // 2
+        System.out.println(vasya == ("Vas" + "ya")); // 3
+        System.out.println(vasya == ("Vas" + ya).intern()); // 4
     }
 }
