@@ -129,6 +129,16 @@ public class myLinkedList<T> {
         System.out.println();
     }
 
+    public void printList() {
+        if (this.isEmpty())
+            System.out.print("Empty list");
+        else {
+            LinkedListIterator itr = this.first();
+            for (; itr.isValid(); itr.advance())
+                System.out.print(itr.retrieve() + " ");
+        }
+        System.out.println();
+    }
 
     // In this routine, LinkedList and LinkedListIterator are the
     // classes written in Section 17.2.
@@ -138,46 +148,5 @@ public class myLinkedList<T> {
         for (itr = theList.first(); itr.isValid(); itr.advance())
             size++;
         return size;
-    }
-
-
-    public static void main(String[] args) {
-        myLinkedList theList = new myLinkedList();
-        LinkedListIterator theItr;
-        int i;
-        theItr = theList.zeroth();
-        printList(theList);
-
-        for (i = 0; i < 10; i++) {
-            theList.insert(new Integer(i), theItr);
-            printList(theList);
-            theItr.advance();
-        }
-
-        System.out.println("Size was: " + listSize(theList));
-
-        for (i = 0; i < 10; i += 2)
-            theList.remove(new Integer(i));
-
-        for (i = 0; i < 10; i++) {
-            //System.out.println("i=" + i);
-            if ((i % 2 == 0) == (theList.find(new Integer(i)).isValid()))
-                System.out.println("Find fails!");
-            //if (i % 2 == 0) System.out.println("i % 2 == 0");
-            //if (theList.find(new Integer(i)).isValid()) System.out.println("theList.find(new Integer(i)).isValid())");
-        }
-
-        System.out.println("Finished deletions");
-        printList(theList);
-
-        myLinkedList PersonList = new myLinkedList();
-        theItr = PersonList.zeroth();
-        printList(PersonList);
-        for (i = 0; i < 10; i++) {
-            theList.insert(new Person("Petr_"+i), theItr);
-            printList(PersonList);
-            theItr.advance();
-        }
-        printList(PersonList);
     }
 }

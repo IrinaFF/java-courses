@@ -28,6 +28,18 @@ public class myArrayList<T> {
     }
 
     /*
+    Добавляет новый элемент в список в указанную позицию. При достижении размера внутреннего
+    массива происходит его увеличение в два раза.
+    */
+    public void add(T item, int pos) {
+        if(pointer == array.length-1)
+            resize(array.length*2); // увеличу в 2 раза, если достигли границ
+        if (pos >= 0)
+
+        array[pointer++] = item;
+    }
+
+    /*
     Возвращает элемент списка по индексу.
     */
     public T get(int index) {
@@ -42,7 +54,7 @@ public class myArrayList<T> {
     места.
     */
     public void remove(int index) {
-        for (int i = index; i<pointer; i++)
+        for (int i = index; i < pointer; i++)
             array[i] = array[i+1];
         array[pointer] = null;
         pointer--;
@@ -50,6 +62,24 @@ public class myArrayList<T> {
             resize(array.length/2); // если элементов в CUT_RATE раз меньше чем
         // длина массива, то уменьшу в два раза
     }
+
+    public boolean remove(Object o) {
+        if (o == null) {
+            for (int i = 0; i < pointer; i++)
+                if (array[i] == null) {
+                    remove(i);
+                    return true;
+                }
+        } else {
+            for (int i = 0; i < pointer; i++)
+                if (o.equals(array[i])) {
+                    remove(i);
+                    return true;
+                }
+        }
+        return false;
+    }
+
     /*Возвращает количество элементов в списке*/
     public int size() {
         return pointer;
