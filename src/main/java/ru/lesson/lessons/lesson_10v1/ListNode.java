@@ -4,17 +4,17 @@ package ru.lesson.lessons.lesson_10v1;
 // Note that this class is not accessible outside
 // of package weiss.nonstandard
 
-class ListNode {
+class ListNode<T> {
     // Constructors
-    public ListNode(Object theElement) {
+    public ListNode(T theElement) {
         this(theElement, null);
     }
 
-    public ListNode(Object theElement, ListNode n) {
+    public ListNode(T theElement, ListNode n) {
         element = theElement;
         next = n;
     }
 
-    public Object element;
+    public T element;
     public ListNode next;
 }

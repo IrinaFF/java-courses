@@ -1,9 +1,7 @@
 package ru.lesson.lessons.lesson_10v1;
 
 // LinkedListIterator class; maintains "current position"
-//
 // CONSTRUCTION: Package visible only, with a ListNode
-//
 // ******************PUBLIC OPERATIONS*********************
 // void advance( )        --> Advance
 // boolean isValid( )     --> True if at valid position in list
@@ -17,24 +15,10 @@ package ru.lesson.lessons.lesson_10v1;
  * @see myLinkedList
  */
 
-// LinkedListIterator class; maintains "current position"
-//
-// CONSTRUCTION: Package visible only, with a ListNode
-//
-// ******************PUBLIC OPERATIONS*********************
-// void advance( )        --> Advance
-// boolean isValid( )     --> True if at valid position in list
-// Object retrieve        --> Return item in current position
+public class LinkedListIterator<T> {
 
-/**
- * Linked list implementation of the list iterator
- * <p>
- * using a header node.
- * @author Mark Allen Weiss
- * @see myLinkedList
- */
+    ListNode current;    // Current position
 
-public class LinkedListIterator {
     /**
      * Construct the list iterator
      * @param theNode any node in the linked list.
@@ -57,8 +41,8 @@ public class LinkedListIterator {
      * <p>
      * is not in the list.
      */
-    public Object retrieve() {
-        return isValid() ? current.element : null;
+    public T retrieve() {
+        return isValid() ? (T) current.element : null;
     }
 
     /**
@@ -70,6 +54,4 @@ public class LinkedListIterator {
         if (isValid())
             current = current.next;
     }
-
-    ListNode current;    // Current position
 }

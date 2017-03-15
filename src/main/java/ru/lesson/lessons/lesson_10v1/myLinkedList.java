@@ -4,7 +4,6 @@ package ru.lesson.lessons.lesson_10v1;
 // http://javist.ru/svyazannyj-spisok-realizacii-v-java/
 // CONSTRUCTION: with no initializer
 // Access is via LinkedListIterator class
-//
 // ******************PUBLIC OPERATIONS*********************
 // boolean isEmpty( )     --> Return true if empty; else false
 // void makeEmpty( )      --> Remove all items
@@ -21,24 +20,31 @@ package ru.lesson.lessons.lesson_10v1;
 // ******************ERRORS********************************
 // No special errors
 
-
 /**
  * Linked list implementation of the list
- * <p>
  * using a header node.
- * <p>
  * Access to the list is via LinkedListIterator.
- *
  * @author Mark Allen Weiss
  * @see LinkedListIterator
  */
 
-public class myLinkedList {
+public class myLinkedList<T> {
     private ListNode header;
 
     /** Construct the list  */
     public myLinkedList() {
         header = new ListNode(null);
+    }
+
+    /**
+     * Insert after p.
+     * @param x the item to insert.
+     * @param p the position prior to the newly inserted item.
+     */
+
+    public void insert(T x, LinkedListIterator p) {
+        if (p != null && p.current != null)
+            p.current.next = new ListNode(x, p.current.next);
     }
 
     /**
@@ -73,23 +79,12 @@ public class myLinkedList {
     }
 
     /**
-     * Insert after p.
-     * @param x the item to insert.
-     * @param p the position prior to the newly inserted item.
-     */
-
-    public void insert(Object x, LinkedListIterator p) {
-        if (p != null && p.current != null)
-            p.current.next = new ListNode(x, p.current.next);
-    }
-
-    /**
      * Return iterator corresponding to the first node containing an item.
      * @param x the item to search for.
      * @return an iterator; iterator is not valid if item is not found.
      */
 
-    public LinkedListIterator find(Object x) {
+    public LinkedListIterator find(T x) {
         ListNode itr = header.next;
         while (itr != null && !itr.element.equals(x))
             itr = itr.next;
@@ -104,7 +99,7 @@ public class myLinkedList {
      * iterator corresponding to the last element in the list is returned.
      */
 
-    public LinkedListIterator findPrevious(Object x) {
+    public LinkedListIterator findPrevious(T x) {
         ListNode itr = header;
         while (itr.next != null && !itr.next.element.equals(x))
             itr = itr.next;
@@ -116,7 +111,7 @@ public class myLinkedList {
      * @param x the item to remove.
      */
 
-    public void remove(Object x) {
+    public void remove(T x) {
         LinkedListIterator p = findPrevious(x);
         if (p.current.next != null)
             p.current.next = p.current.next.next;  // Bypass deleted node
@@ -137,7 +132,6 @@ public class myLinkedList {
 
     // In this routine, LinkedList and LinkedListIterator are the
     // classes written in Section 17.2.
-
     public static int listSize(myLinkedList theList) {
         LinkedListIterator itr;
         int size = 0;
@@ -165,10 +159,25 @@ public class myLinkedList {
         for (i = 0; i < 10; i += 2)
             theList.remove(new Integer(i));
 
-        for (i = 0; i < 10; i++)
+        for (i = 0; i < 10; i++) {
+            //System.out.println("i=" + i);
             if ((i % 2 == 0) == (theList.find(new Integer(i)).isValid()))
                 System.out.println("Find fails!");
+            //if (i % 2 == 0) System.out.println("i % 2 == 0");
+            //if (theList.find(new Integer(i)).isValid()) System.out.println("theList.find(new Integer(i)).isValid())");
+        }
+
         System.out.println("Finished deletions");
         printList(theList);
+
+        myLinkedList PersonList = new myLinkedList();
+        theItr = PersonList.zeroth();
+        printList(PersonList);
+        for (i = 0; i < 10; i++) {
+            theList.insert(new Person("Petr_"+i), theItr);
+            printList(PersonList);
+            theItr.advance();
+        }
+        printList(PersonList);
     }
 }
