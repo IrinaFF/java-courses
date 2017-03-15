@@ -1,6 +1,7 @@
 package ru.lesson.lessons.lesson_10;
 
 import org.junit.Test;
+
 import java.util.*;
 import static org.junit.Assert.*;
 
@@ -21,7 +22,9 @@ public class CollectionModifyTest {
      UserModify equals
      UserModify equals
      */
+     /*
     @Test
+
     public void arrayContains() {
         System.out.println("UserModify arrayContains");
         List<UserModify> users = new ArrayList<UserModify>();
@@ -30,6 +33,7 @@ public class CollectionModifyTest {
         //выявим, если метод equls неверно перекрыт
         assertTrue(users.contains(new UserModify("1", "first", new User("1", "1"))));
     }
+    */
     /**
      * переопределенный equals не вызывается
      * переопределенный hashCode вызывается
@@ -66,6 +70,7 @@ public class CollectionModifyTest {
      UserModify hashCode() : -1274265247
      UserModify equals
      */
+    /*
     @Test
     public void mapPut() {
         System.out.println("UserModify mapPut");
@@ -76,4 +81,5 @@ public class CollectionModifyTest {
         //метод задействует наш hashcode
         assertEquals(2, users.size());
     }
+    */
 }
