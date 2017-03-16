@@ -38,7 +38,6 @@ public class Clinic {
         }
     }
 
-
     //4 Поиск клиента по имени клиента
     public Client findClientByName(final String name) {
         Client result = null;
@@ -133,6 +132,11 @@ public class Clinic {
                     " Client pet name: "+clients.get(i).getPetName() +
                     " Pet type: " + clients.get(i).getPetType());
         }
+    }
+
+    //Количество клиентов клиники
+    public int getSize() {
+        return clients.size();
     }
 
     /* получение имени клиента по индексу */
