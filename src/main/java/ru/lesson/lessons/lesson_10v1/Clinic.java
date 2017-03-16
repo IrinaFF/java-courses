@@ -71,11 +71,11 @@ public class Clinic {
     }
 
     //6 Поиск питомца по имени клиента
-    public Client findPetByNameClient(final String name) {
-        Client result = null;
+    public Pet findPetByNameClient(final String name) {
+        Pet result = null;
         for (int i = 0; i < clients.size(); i++) {
             if (clients.get(i) != null && name.equals(clients.get(i).getClientId())) {
-                result = clients.get(i);
+                result = clients.get(i).pet;
                 //System.out.println(i + ": Client: "+ clients.get(i).getClientId());
             }
         }

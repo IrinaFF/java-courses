@@ -7,7 +7,7 @@ package ru.lesson.lessons.lesson_10v1;
  */
 public class Client {
     private String id;
-    private Pet pet;
+    public Pet pet;
 
     /**
      * @param id  номер
