@@ -31,20 +31,14 @@ public class Clinic {
     }
 
     //2 + или заменить питомца клиенту
-    public boolean addClientPet(final String nameClient, final String namePet, int typePet) {
+    public boolean addClientPet(final String nameClient, final Pet pet) {
         myArrayList<Client> result = findClientByName(nameClient);
         boolean res = false;
         for(int i = 0; i < result.size(); i++) {
-            if (typePet == 1) {
-                result.get(i).addPet(new Cat(namePet));
-                res = true;
-            }
-            if (typePet == 2) {
-                result.get(i).addPet(new Dog(namePet));
-                res = true;
+            result.get(i).addPet(pet);
+            res = true;
             }
             //System.out.println("add pet for client: " + result.getClientId() + " pet: " + result.getPetName());
-        }
         return res;
     }
 
@@ -65,13 +59,10 @@ public class Clinic {
 
     // 3 Поиск клиента по кличке питомца
     public myArrayList<Client> findClientByPetName(final String name) {
-        myArrayList<Client> result = null;
+        myArrayList<Client> result = new myArrayList<Client>();
         for(int i = 0; i < clients.size(); i++) {
-            //if (this.clients[i] != null) {System.out.println(i + ": " + this.clients[i].getPetName());}
-            if (clients.get(i) != null && (name).equals(clients.get(i).getPetName()))  {
+                  if (clients.get(i) != null && name.equals(clients.get(i).getPetName()))  {
                 result.add(clients.get(i));
-                //System.out.println(i + ": Client: "+ clients.get(i).getClientId() +
-                        //" pet: "+ clients.get(i).getPetName());
             }
         }
         return result;
@@ -79,7 +70,7 @@ public class Clinic {
 
     //5 Поиск питомца по имени клиента
     public myArrayList<Pet> findPetByClientName(final String name) {
-        myArrayList<Pet> result = null;
+        myArrayList<Pet> result = new myArrayList<Pet>();
         for (int i = 0; i < clients.size(); i++) {
             if (clients.get(i) != null && name.equals(clients.get(i).getClientId())) {
                 result.add(clients.get(i).pet);
@@ -91,9 +82,9 @@ public class Clinic {
 
     //6 Поиск питомца по имени питомца
     public myArrayList<Pet> findPetByPetName(final String name) {
-        myArrayList<Pet> result = null;
+        myArrayList<Pet> result = new myArrayList<Pet>();
         for (int i = 0; i < clients.size(); i++) {
-            if (clients.get(i) != null && name.equals(clients.get(i).getClientId())) {
+            if (clients.get(i) != null && name.equals(clients.get(i).getPetName())) {
                 result.add(clients.get(i).pet);
                 //System.out.println(i + ": Client: "+ clients.get(i).getClientId());
             }
@@ -144,7 +135,7 @@ public class Clinic {
     }
 
     //11 вывести клиентов и питомцев клиники
-    public void chowClient() {
+    public void showClient() {
         //this.clients1.add(position, client);
         for (int i = 0; i < clients.size(); i++) {
             //System.out.println(client);

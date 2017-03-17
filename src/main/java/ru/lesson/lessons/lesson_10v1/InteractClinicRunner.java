@@ -54,7 +54,7 @@ public class InteractClinicRunner {
                         idClient = scan.enterName("Client");
                         typePet = scan.enterPetType();
                         petName = scan.enterPetName();
-                        isInput = clinic.addClientPet(idClient, petName, typePet);
+                        isInput = clinic.addClientPet(idClient, createPet(petName, typePet));
                         if (isInput) {
                             System.out.println("Pet for client add/replace");
                         }
@@ -126,6 +126,18 @@ public class InteractClinicRunner {
         finally {
             reader.close();
         }
+    }
+    //добавить питомца
+    public static Pet createPet(String namePet, int typePet) {
+        Pet pet = null;
+        if (typePet == 1) {
+            pet = new Cat(namePet);
+        }
+        if (typePet == 2) {
+            pet = new Dog(namePet);
+        }
+            //System.out.println("add pet for client: " + result.getClientId() + " pet: " + result.getPetName());
+        return pet;
     }
 
     // вывести список найденных клиентов

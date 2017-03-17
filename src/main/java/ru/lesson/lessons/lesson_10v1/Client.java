@@ -27,7 +27,7 @@ public class Client {
         if (this.pet != null) {
             return this.pet.getName();
         } else {
-            return "null";
+            return null;
         }
     }
 
@@ -35,9 +35,8 @@ public class Client {
     public String getPetType() {
         if (this.pet != null) {
             return String.valueOf(this.pet.getClass().getSimpleName());//.getEnclosingClass()
-        } else {
-            return "null";
         }
+        return null;
     }
 
     //Получить id-Имя Клиента

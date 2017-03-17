@@ -80,6 +80,23 @@ public class myArrayList<T> {
         return false;
     }
 
+    public int indexOf(Object o) {
+        if (o == null) {
+            for (int i = 0; i < pointer; i++)
+                if (array[i]==null)
+                    return i;
+        } else {
+            for (int i = 0; i < pointer; i++)
+                if (o.equals(array[i]))
+                    return i;
+        }
+        return -1;
+    }
+
+    public boolean contains(Object o) {
+        return indexOf(o) >= 0;
+    }
+
     /*Возвращает количество элементов в списке*/
     public int size() {
         return pointer;
