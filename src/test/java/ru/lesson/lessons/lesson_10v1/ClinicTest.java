@@ -29,9 +29,6 @@ public class ClinicTest {
 
     @Test
     public void addClient() throws Exception {
-//        Client cl1 = new Client("Petr");
-//        Client cl2 = new Client("Ivan");
-//        Client cl3 = new Client("Ivan");
         Cat cat1 = new Cat("Moon");
         Dog dog1 = new Dog("Tod");
         clinic.addClient(cl1);
@@ -42,32 +39,21 @@ public class ClinicTest {
 
     @Test
     public void addClientPet() throws Exception {
-//        Client cl1 = new Client("Petr");
-//        Client cl2 = new Client("Ivan");
-//        Client cl3 = new Client("Ivan");
-//        Cat cat1 = new Cat("Moon");
-//        Dog dog1 = new Dog("Tod");
         clinic.addClient(cl1);
         clinic.addClient(cl2);
         clinic.addClient(cl3);
         clinic.addClientPet("Petr", dog1);
 
-        assertTrue(cl1.getPetName().equals("Tod") &&
-        clinic.findClientByPetName("Tod").getClientId().equals("Petr"));
+        assertTrue(cl1.getPetName().equals("Tod"));
     }
 
     @Test
     public void findClientByName() throws Exception {
-//        Client cl1 = new Client("Petr");
-//        Client cl2 = new Client("Ivan");
-//        Client cl3 = new Client("Ivan");
-//        Cat cat1 = new Cat("Moon");
-//        Dog dog1 = new Dog("Tod");
         clinic.addClient(cl1);
         clinic.addClient(cl2);
         clinic.addClient(cl3);
         clinic.addClientPet("Petr", dog1);
-        assertEquals(clinic.findClientByName("Petr"), cl1);
+        assertTrue(clinic.findClientByName("Petr").contains(cl1));
     }
 
     @Test
@@ -76,7 +62,7 @@ public class ClinicTest {
         clinic.addClient(cl2);
         clinic.addClient(cl3);
         clinic.addClientPet("Petr", dog1);
-        assertEquals(clinic.findClientByPetName("Tod"), cl1);
+        assertTrue(clinic.findClientByPetName("Tod").contains(cl1));
 
     }
 
@@ -86,7 +72,16 @@ public class ClinicTest {
         clinic.addClient(cl2);
         clinic.addClient(cl3);
         clinic.addClientPet("Petr", dog1);
-        assertEquals(clinic.findPetByClientName("Petr"),dog1);
+        assertTrue(clinic.findPetByClientName("Petr").contains(dog1));
+    }
+
+    @Test
+    public void findPetByPetName() throws Exception {
+        clinic.addClient(cl1);
+        clinic.addClient(cl2);
+        clinic.addClient(cl3);
+        clinic.addClientPet("Petr", dog1);
+        assertTrue(clinic.findPetByPetName("Tod").contains(dog1));
     }
 
     @Test
@@ -95,7 +90,7 @@ public class ClinicTest {
         clinic.addClient(cl2);
         clinic.addClient(cl3);
         clinic.changeClientName("Ivan", "Nikolay");
-        assertEquals(clinic.findClientByName("Nikolay"),cl2);
+        assertTrue(clinic.findClientByName("Nikolay").contains(cl2));
     }
 
     @Test
@@ -106,7 +101,8 @@ public class ClinicTest {
         clinic.addClientPet("Petr", cat1);
         clinic.addClientPet("Ivan", dog1);
         clinic.changeClientPetName("Ivan", "Mops");
-        assertEquals(clinic.findClientByPetName("Mops"),cl2);
+        clinic.showClient();
+        assertTrue(clinic.findClientByPetName("Mops").contains(cl2));
     }
 
     @Test
@@ -117,7 +113,7 @@ public class ClinicTest {
         clinic.addClientPet("Petr", cat1);
         clinic.addClientPet("Ivan", dog1);
         clinic.deleteClient("Stepan");
-        assertNull(clinic.findClientByName("Stepan"));
+        assertTrue(clinic.findClientByName("Stepan").size()== 0);
     }
 
     @Test
@@ -128,7 +124,7 @@ public class ClinicTest {
         clinic.addClientPet("Petr", cat1);
         clinic.addClientPet("Ivan", dog1);
         clinic.deleteClientPet("Ivan");
-        assertNull(clinic.findClientByPetName("Tod"));
+        assertNull(cl2.getPetName());
     }
 
 }
