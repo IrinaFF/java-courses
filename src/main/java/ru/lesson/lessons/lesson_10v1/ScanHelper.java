@@ -38,7 +38,7 @@ public class ScanHelper {
         while (isInput) {
             try {
                 opType = Integer.valueOf(reader.next());
-                if (opType > 0 && opType < 11) {
+                if (opType > 0 && opType < 13) {
                     isInput = false;
                 } else {
                     System.out.println("Ввведите целое число от 1 до 10 для выбора операции");
@@ -55,7 +55,7 @@ public class ScanHelper {
         System.out.print("Enter pet type (1 - Cat, 2 - Dog):");
         int typePet = -1;
         boolean isInput = true;
-        typePet = Integer.valueOf(reader.next());
+        //typePet = Integer.valueOf(reader.next());
         /**
         if (!(typePet > 0 && typePet < 4)) {
             throw new UserException("Pet type must in 1,2,3");

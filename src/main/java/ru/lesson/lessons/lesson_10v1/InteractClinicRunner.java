@@ -25,7 +25,7 @@ public class InteractClinicRunner {
         Clinic clinic = new Clinic();
         String idClient;
         String idClientNew;
-        Integer typePet = 0;
+        int petType = 0;
         String petName = "";
         String newPetName = "";
         myArrayList<Client> clients;
@@ -41,10 +41,9 @@ public class InteractClinicRunner {
                     //1 - add client
                     case 1:
                         System.out.println("Selected operation '1. add client'");
-
                         idClient = scan.enterName("Client");
-                        typePet = scan.enterPetType();
-                        petName = scan.enterPetName();
+                        //petType = scan.enterPetType();
+                        //petName = scan.enterPetName();
                         clinic.addClient(new Client(idClient));
                         System.out.println("Client "+ idClient+ " is added");
                         break;
@@ -52,9 +51,9 @@ public class InteractClinicRunner {
                     case 2:
                         System.out.println("Selected operation '2. add/replace animal of client'");
                         idClient = scan.enterName("Client");
-                        typePet = scan.enterPetType();
+                        petType = scan.enterPetType();
                         petName = scan.enterPetName();
-                        isInput = clinic.addClientPet(idClient, createPet(petName, typePet));
+                        isInput = clinic.addClientPet(idClient, createPet(petName, petType));
                         if (isInput) {
                             System.out.println("Pet for client add/replace");
                         }
@@ -107,11 +106,7 @@ public class InteractClinicRunner {
                         break;
                     case 11:
                         System.out.println("Selected operation '11. show Clinica' : ");
-                        for (int i = 0; i < clinicsize; i++) {
-                            System.out.println( i + ": " + clinic.getNameClient(i)+ " " +
-                                    clinic.getTypePetClient(i)+ " " +
-                                    clinic.getNamePetClient(i));
-                        }
+                        clinic.showClient();
                         break;
                     case 12:
                         exit = "1";
@@ -136,7 +131,6 @@ public class InteractClinicRunner {
         if (typePet == 2) {
             pet = new Dog(namePet);
         }
-            //System.out.println("add pet for client: " + result.getClientId() + " pet: " + result.getPetName());
         return pet;
     }
 

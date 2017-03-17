@@ -136,12 +136,10 @@ public class Clinic {
 
     //11 вывести клиентов и питомцев клиники
     public void showClient() {
-        //this.clients1.add(position, client);
         for (int i = 0; i < clients.size(); i++) {
-            //System.out.println(client);
-            System.out.println("Client name: " + clients.get(i).getClientId() +
-                    " Client pet name: "+clients.get(i).getPetName() +
-                    " Pet type: " + clients.get(i).getPetType());
+            System.out.println(i + ": Client- " + clients.get(i).getClientId() +
+                    " Pet- " + clients.get(i).getPetName() +
+                    " Vid: " + clients.get(i).getPetType());
         }
     }
 
