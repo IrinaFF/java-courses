@@ -81,12 +81,12 @@ public class ClinicTest {
     }
 
     @Test
-    public void findPetByNameClient() throws Exception {
+    public void findPetByClientName() throws Exception {
         clinic.addClient(cl1);
         clinic.addClient(cl2);
         clinic.addClient(cl3);
         clinic.addClientPet("Petr", dog1);
-        assertEquals(clinic.findPetByNameClient("Petr"),dog1);
+        assertEquals(clinic.findPetByClientName("Petr"),dog1);
     }
 
     @Test
