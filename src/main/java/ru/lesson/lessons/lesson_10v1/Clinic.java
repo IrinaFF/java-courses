@@ -6,10 +6,10 @@ package ru.lesson.lessons.lesson_10v1;
  * @since 15.03.2017
  * 1 + клиента
  * 2 + или заменить питомца клиенту
- * 3
- * 4 Поиск клиента по имени клиента
- * 5 Поиск клиента по кличке питомца
- * 6 Поиск питомца по имени клиента
+ * 3 Поиск клиента по имени клиента
+ * 4 Поиск клиента по кличке питомца
+ * 5 Поиск питомца по имени клиента
+ * 6 Поиск питомца по имени питомца
  * 7 изменить имя клиента
  * 8 изменить имя питомца
  * 9 Удалить клиента
@@ -19,6 +19,7 @@ package ru.lesson.lessons.lesson_10v1;
 public class Clinic {
     //Массив клиентов
     private myArrayList<Client> clients;
+    //private myArrayList<Pet> pets;
 
     public Clinic() {
         this.clients = new myArrayList<Client>();
@@ -30,20 +31,29 @@ public class Clinic {
     }
 
     //2 + или заменить питомца клиенту
-    public void addClientPet(final String nameClient, Pet pet) {
-        Client result = findClientByName(nameClient);
-        if (result != null) {
-            result.addPet(pet);
+    public boolean addClientPet(final String nameClient, final String namePet, int typePet) {
+        myArrayList<Client> result = findClientByName(nameClient);
+        boolean res = false;
+        for(int i = 0; i < result.size(); i++) {
+            if (typePet == 1) {
+                result.get(i).addPet(new Cat(namePet));
+                res = true;
+            }
+            if (typePet == 2) {
+                result.get(i).addPet(new Dog(namePet));
+                res = true;
+            }
             //System.out.println("add pet for client: " + result.getClientId() + " pet: " + result.getPetName());
         }
+        return res;
     }
 
-    //4 Поиск клиента по имени клиента
-    public Client findClientByName(final String name) {
-        Client result = null;
+    //3 Поиск клиента по имени клиента
+    public myArrayList<Client> findClientByName(final String name) {
+        myArrayList<Client> result = new myArrayList<Client>();
         for(int i = 0; i < clients.size(); i++) {
             if (clients.get(i) != null && name.equals(clients.get(i).getClientId()))  {
-                result = clients.get(i);
+                result.add(clients.get(i));
                 //System.out.println(i + ": Client: "+ clients.get(i).getClientId());
             }
         }
@@ -53,74 +63,84 @@ public class Clinic {
         return result;
     }
 
-    // 5 Поиск клиента по кличке питомца
-    public Client findClientByPetName(final String name) {
-        Client result = null;
+    // 3 Поиск клиента по кличке питомца
+    public myArrayList<Client> findClientByPetName(final String name) {
+        myArrayList<Client> result = null;
         for(int i = 0; i < clients.size(); i++) {
             //if (this.clients[i] != null) {System.out.println(i + ": " + this.clients[i].getPetName());}
             if (clients.get(i) != null && (name).equals(clients.get(i).getPetName()))  {
-                result = clients.get(i);
+                result.add(clients.get(i));
                 //System.out.println(i + ": Client: "+ clients.get(i).getClientId() +
                         //" pet: "+ clients.get(i).getPetName());
             }
         }
-        if (result == null) {
-            System.out.println("Client not found");
-        }
         return result;
     }
 
-    //6 Поиск питомца по имени клиента
-    public Pet findPetByNameClient(final String name) {
-        Pet result = null;
+    //5 Поиск питомца по имени клиента
+    public myArrayList<Pet> findPetByClientName(final String name) {
+        myArrayList<Pet> result = null;
         for (int i = 0; i < clients.size(); i++) {
             if (clients.get(i) != null && name.equals(clients.get(i).getClientId())) {
-                result = clients.get(i).pet;
+                result.add(clients.get(i).pet);
                 //System.out.println(i + ": Client: "+ clients.get(i).getClientId());
             }
         }
-        if (result == null) {
-            System.out.println("Client not found");
+        return result;
+    }
+
+    //6 Поиск питомца по имени питомца
+    public myArrayList<Pet> findPetByPetName(final String name) {
+        myArrayList<Pet> result = null;
+        for (int i = 0; i < clients.size(); i++) {
+            if (clients.get(i) != null && name.equals(clients.get(i).getClientId())) {
+                result.add(clients.get(i).pet);
+                //System.out.println(i + ": Client: "+ clients.get(i).getClientId());
+            }
         }
         return result;
     }
 
-    //7 изменить имя клиента: Имя клиента, Новое имя клиента
+    //6 изменить имя клиента: Имя клиента, Новое имя клиента
     public void changeClientName(final String name, String newName) {
-        Client result = findClientByName(name);
-        if (result != null) {
-            result.changeName(newName);
+        myArrayList<Client> result = findClientByName(name);
+        for(int i = 0; i < result.size(); i++) {
+            result.get(i).changeName(newName);
             //System.out.println("Client: " + result.getClientId() + " new pet name: " + result.getPetName());
         }
     }
 
-    //8 изменить имя питомца
+    //7 изменить имя питомца
     public void changeClientPetName(final String nameClient, String namePet) {
-        Client result = findClientByName(nameClient);
-        if (result != null) {
-            result.changeNamePet(namePet);
+        myArrayList<Client> result = findClientByName(nameClient);
+        for(int i = 0; i < result.size(); i++) {
+            result.get(i).changeNamePet(namePet);
             //System.out.println("Client: " + result.getClientId() + " new pet: " + result.getPetName());
         }
     }
 
-    //9 Удалить клиента
+    //8 Удалить клиента
     public boolean deleteClient (final String nameClient) {
-        Client result = findClientByName(nameClient);
-        if (result != null) {
+        myArrayList<Client> result = findClientByName(nameClient);
+        boolean res = false;
+        for (int i = 0; i < result.size(); i++) {
             //System.out.println("delete client with name= " + nameClient + " and index =" + index);
-            clients.remove(result);
-            return true;
+            clients.remove(result.get(i));
+            res = true;
         }
-        else return false;
+        return res;
     }
 
-    //10 Удалить питомца у клиента
-    public void deleteClientPet (final String nameClient) {
-        Client result = findClientByName(nameClient);
-        if (result != null) {
-            result.deletePet();
+    //9 Удалить питомца у клиента
+    public boolean deleteClientPet (final String nameClient) {
+        myArrayList<Client> result = findClientByName(nameClient);
+        boolean res = false;
+        for (int i = 0; i < result.size(); i++) {
+            result.get(i).deletePet();
             //System.out.println("Client: " + result.getClientId() + " delete pet");
+            res = true;
         }
+        return res;
     }
 
     //11 вывести клиентов и питомцев клиники
@@ -139,6 +159,7 @@ public class Clinic {
         return clients.size();
     }
 
+    //Для команд с клавиатуры InteractClinicRunner
     /* получение имени клиента по индексу */
     public String getNameClient (int i) {
         String rezult = "not found";

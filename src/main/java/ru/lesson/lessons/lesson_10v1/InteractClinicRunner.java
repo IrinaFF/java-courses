@@ -1,17 +1,19 @@
 package ru.lesson.lessons.lesson_10v1;
 
-import ru.lesson.lessons.lesson_6v1.Cat;
-import ru.lesson.lessons.lesson_6v1.*;
-import ru.lesson.lessons.lesson_6v1.Client;
-import ru.lesson.lessons.lesson_6v1.Clinic;
-import ru.lesson.lessons.lesson_6v1.Dog;
-import ru.lesson.lessons.lesson_6v1.Pet;
-
 import java.util.Scanner;
 
-/**
- * что-нибудь поделать с клиникой, клиентами и питомцами
- **/
+//* 1 + клиента
+// "2 - add/replace animal of client, \n" +
+//"3 - find client (client name), \n" +
+//"4 - find client (animal name), \n" +
+//"5 - find animal (client name), \n" +
+//"6 - find animal (animal name), \n" +
+//"7 - change name client, \n" +
+//"8 - change name animal, \n" +
+//"9 - delete client, \n" +
+//"10 - delete animal, \n" +
+//"11 - show Clinica, \n" +
+//"12 - exit  \n" +
 
 public class InteractClinicRunner {
 
@@ -20,15 +22,14 @@ public class InteractClinicRunner {
         ScanHelper scan = new ScanHelper();
         Scanner reader = new Scanner(System.in);
         int clinicsize = 10;
-        ru.lesson.lessons.lesson_6v1.Clinic clinic = new ru.lesson.lessons.lesson_6v1.Clinic(clinicsize);
-        int idClientTotal = 0; //счетчик массива
-        int freeIndex; //первый освободившийся индекс массива клиентов
+        Clinic clinic = new Clinic();
         String idClient;
         String idClientNew;
         Integer typePet = 0;
         String petName = "";
         String newPetName = "";
-        Client client;
+        myArrayList<Client> clients;
+        myArrayList<Pet> pets;
 
         try {
             String exit = "0";
@@ -39,75 +40,80 @@ public class InteractClinicRunner {
                 switch (op_type ) {
                     //1 - add client
                     case 1:
-                        System.out.println("Selected operation 'add client'");
-                        if (idClientTotal < 10) {
-                            freeIndex = idClientTotal;
-                        } else {
-                            freeIndex = clinic.findFreeIndex();
-                            if (freeIndex > 0 ) {
-                                System.out.println("Client not add : 10 clients all");
-                                break;
-                            }
-                        }
+                        System.out.println("Selected operation '1. add client'");
+
                         idClient = scan.enterName("Client");
                         typePet = scan.enterPetType();
                         petName = scan.enterPetName();
-                        addClient(freeIndex, clinic, idClient, typePet, petName);
-                        idClientTotal++;
+                        clinic.addClient(new Client(idClient));
+                        System.out.println("Client "+ idClient+ " is added");
                         break;
                     //2 - add animal of client
                     case 2:
-                        System.out.println("Selected operation 'add animal of client'");
+                        System.out.println("Selected operation '2. add/replace animal of client'");
                         idClient = scan.enterName("Client");
                         typePet = scan.enterPetType();
                         petName = scan.enterPetName();
-
-                        isInput = addPetForClient(clinic, idClient, typePet, petName);
-                        if (!isInput) {
-                            System.out.println("Pet for client not add : client not found");
+                        isInput = clinic.addClientPet(idClient, petName, typePet);
+                        if (isInput) {
+                            System.out.println("Pet for client add/replace");
                         }
                         break;
                     case 3:
-                        System.out.println("Selected operation 'find client (animal name)' : ");
-                        petName = scan.enterPetName();
-                        client = clinic.findClientByPetName(petName);
+                        System.out.println("Selected operation '3. find client (client name)' : ");
+                        idClient = scan.enterName("Client");
+                        clients = clinic.findClientByName(idClient);
+                        showClients(clients);
                         break;
                     case 4:
-                        System.out.println("Selected operation 'find client (client name)' : ");
-                        idClient = scan.enterName("Client");
-                        client = clinic.findClientByName(idClient);
+                        System.out.println("Selected operation '4. find client (animal name)' : ");
+                        petName = scan.enterPetName();
+                        clients = clinic.findClientByPetName(petName);
+                        showClients(clients);
                         break;
                     case 5:
-                        System.out.println("Selected operation 'change name client' : ");
+                        System.out.println("Selected operation '5. find animal (client name)' : ");
                         idClient = scan.enterName("Client");
-                        idClientNew = scan.enterName("newClient");
-                        clinic.changeClientName(idClient,idClientNew);
+                        pets = clinic.findPetByClientName(idClient);
+                        showPets(pets);
                         break;
                     case 6:
-                        System.out.println("Selected operation 'change name animal' : ");
+                        System.out.println("Selected operation '6. find animal (animal name)' : ");
+                        idClient = scan.enterName("Client");
+                        pets = clinic.findPetByPetName(idClient);
+                        showPets(pets);
+                        break;
+                    case 7:
+                        System.out.println("Selected operation '7. change name client' : ");
+                        idClient = scan.enterName("Client");
+                        idClientNew = scan.enterName("idClientNew");
+                        clinic.changeClientName(idClient, idClientNew);
+                        break;
+                    case 8:
+                        System.out.println("Selected operation '8. change name animal' : ");
                         idClient = scan.enterName("Client");
                         newPetName = scan.enterName("newPet");
                         clinic.changeClientPetName(idClient, newPetName);
                         break;
-                    case 7:
-                        System.out.println("Selected operation 'delete client' : ");
+                    case 9:
+                        System.out.println("Selected operation '9. delete client' : ");
                         idClient = scan.enterName("Client");
                         clinic.deleteClient(idClient);
                         break;
-                    case 8:
-                        System.out.println("Selected operation 'delete animal' : ");
+                    case 10:
+                        System.out.println("Selected operation '10. delete animal' : ");
                         idClient = scan.enterName("Client");
                         clinic.deleteClientPet(idClient);
                         break;
-                    case 9:
-                        System.out.println("Selected operation 'show Clinica' : ");
+                    case 11:
+                        System.out.println("Selected operation '11. show Clinica' : ");
                         for (int i = 0; i < clinicsize; i++) {
                             System.out.println( i + ": " + clinic.getNameClient(i)+ " " +
                                     clinic.getTypePetClient(i)+ " " +
                                     clinic.getNamePetClient(i));
                         }
                         break;
-                    case 10:
+                    case 12:
                         exit = "1";
                         break;
                     default:
@@ -122,40 +128,22 @@ public class InteractClinicRunner {
         }
     }
 
-    //Добавление клиента
-    public static void addClient(int i, ru.lesson.lessons.lesson_6v1.Clinic clinic, String clientName,
-                                 int petType, String namePet) {
-        Pet pet;
-        if (petType == 1) {
-            pet = new Dog (namePet);
-        } else if (petType == 2) {
-            pet = new Cat (namePet);
-        } else {
-            pet = new CatDog(new Cat (namePet), new Dog (namePet));
+    // вывести список найденных клиентов
+    public static void showClients(myArrayList<Client> c) {
+        for (int i = 0; i < c.size(); i++) {
+            //System.out.println(client);
+            System.out.println("N" + i + " client name: " + c.get(i).getClientId() +
+                    " Client pet name: "+c.get(i).getPetName() +
+                    " Pet type: " + c.get(i).getPetType());
         }
-        Client client = new Client(clientName, pet);
-        clinic.addClient(i, client);
     }
 
-    //Добавление животного клиенту
-    public static boolean addPetForClient(Clinic clinic, String clientName,
-                                          int petType, String namePet) {
-        boolean result = false;
-        Pet pet = null;
-        Client client = clinic.findClientByName(clientName);
-        if (client != null) {
-            result = true;
-            if (petType == 1) {
-                pet = new Dog (namePet);
-            } else if (petType == 2) {
-                pet = new Cat (namePet);
-            } else if (petType == 3) {
-                pet = new CatDog(new Cat (namePet), new Dog (namePet));
-            } else {
-                System.out.println("Pet not add");
-            }
-            client.addPet(pet);
+    // вывести список найденных животных
+    public static void showPets(myArrayList<Pet> p) {
+        for (int i = 0; i < p.size(); i++) {
+            //System.out.println(client);
+            System.out.println("Pet name: " + p.get(i).getName());
         }
-        return result;
     }
+
 }
