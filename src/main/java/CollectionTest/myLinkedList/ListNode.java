@@ -1,4 +1,4 @@
-package ru.lesson.lessons.lesson_10v1;
+package CollectionTest.myLinkedList;
 
 // Basic node stored in a linked list
 // Note that this class is not accessible outside

@@ -1,5 +1,6 @@
 package ru.lesson.lessons.lesson_10v1;
 
+
 /**
  * http://javist.ru/svyazannyj-spisok-realizacii-v-java/
  * @autor irinaff
@@ -9,21 +10,26 @@ package ru.lesson.lessons.lesson_10v1;
 public class TestMyLinkedList {
     public static void main(String[] args) {
         myLinkedList theList = new myLinkedList();
-        LinkedListIterator theItr;
+        myLinkedList.LinkedListIterator theItr;
         int i;
-        theItr = theList.zeroth();
+        //theItr = theList.zeroth();
         theList.printList();
 
         for (i = 0; i < 10; i++) {
-            theList.insert(new Integer(i), theItr);
+            //theList.insert(new Integer(i), theItr);
+            theList.linkLast(new Integer(i));
             theList.printList();
-            theItr.advance();
+            //theItr.advance();
         }
 
-        System.out.println("Size was: " + theList.listSize(theList));
+        //System.out.println("Size was: " + theList.listSize(theList));
+        System.out.println("Size was (2): " + theList.size());
 
         for (i = 0; i < 10; i += 2)
             theList.remove(new Integer(i));
+
+        //System.out.println("Size was: " + theList.listSize(theList));
+        System.out.println("Size was (2): " + theList.size());
 
         for (i = 0; i < 10; i++) {
             //System.out.println("i=" + i);
@@ -36,14 +42,23 @@ public class TestMyLinkedList {
         System.out.println("Finished deletions");
         theList.printList();
 
-        myLinkedList PersonList = new myLinkedList();
-        theItr = PersonList.zeroth();
-        PersonList.printList();
+        myLinkedList personList = new myLinkedList();
+        //theItr = personList.zeroth();
+        personList.printList();
         for (i = 0; i < 10; i++) {
-            theList.insert(new Person("Petr_"+i), theItr);
-            PersonList.printList();
-            theItr.advance();
+            //personList.insert(new Person("Petr_"+i), theItr);
+            personList.linkLast(new Person("Petr_"+i));
+            personList.printList();
+            //theItr.advance();
         }
-        PersonList.printList();
+        personList.printList();
+        //System.out.println("Size was: " + personList.listSize(personList));
+        System.out.println("Size was (2): " + personList.size());
+
+
+        theItr = theList.first();
+        for (; theItr.isValid(); theItr.advance())
+            System.out.print(theItr.retrieve() + " ");
+
     }
 }

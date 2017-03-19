@@ -1,4 +1,4 @@
-package ru.lesson.lessons.lesson_10v1;
+package CollectionTest.myLinkedList;
 
 // LinkedListIterator class; maintains "current position"
 // CONSTRUCTION: Package visible only, with a ListNode
@@ -6,6 +6,8 @@ package ru.lesson.lessons.lesson_10v1;
 // void advance( )        --> Advance
 // boolean isValid( )     --> True if at valid position in list
 // Object retrieve        --> Return item in current position
+
+import ru.lesson.lessons.lesson_10v1.myLinkedList;
 
 /**
  * Linked list implementation of the list iterator
