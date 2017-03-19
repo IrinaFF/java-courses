@@ -54,5 +54,18 @@ public class HashMapTest {
                 System.out.println("  " + pet);
             }
         }
+
+        //Map предоставляет безопасный путь удаления элементов в средине итерации, Hashtable - не предоставляет. Например:
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("1", "a");
+        map.put("2", "b");
+        map.put("3", "c");
+
+        for (Iterator<String> it = map.keySet().iterator(); it.hasNext(); )
+            if ( "2".equals( it.next() ) )
+                it.remove();
+
+        System.out.println( map );
+// Output: {3=c, 1=a}
     }
 }
