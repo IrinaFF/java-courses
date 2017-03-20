@@ -17,7 +17,7 @@ public class TestMyLinkedList {
 
         for (i = 0; i < 10; i++) {
             //theList.insert(new Integer(i), theItr);
-            theList.linkLast(new Integer(i));
+            theList.add(new Integer(i));
             theList.printList();
             //theItr.advance();
         }
@@ -47,7 +47,7 @@ public class TestMyLinkedList {
         personList.printList();
         for (i = 0; i < 10; i++) {
             //personList.insert(new Person("Petr_"+i), theItr);
-            personList.linkLast(new Person("Petr_"+i));
+            personList.add(new Person("Petr_"+i));
             personList.printList();
             //theItr.advance();
         }

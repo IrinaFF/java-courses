@@ -42,7 +42,7 @@ public class myLinkedList<T> {
     /**
      * Links e as last element.
      */
-    void linkLast(T t) {
+    void add (T t) {
         final ListNode<T> l = last;
         final ListNode<T> newNode = new ListNode<>(l, t, null);
         last = newNode;
@@ -97,6 +97,35 @@ public class myLinkedList<T> {
             size--;
     }
 
+    /**
+     * Returns the (non-null) Node at the specified element index.
+     */
+    ListNode<T> node(int index) {
+        // assert isElementIndex(index);
+
+        if (index < (size >> 1)) {
+            ListNode<T> x = first;
+            for (int i = 0; i < index; i++)
+                x = x.next;
+            return x;
+        } else {
+            ListNode<T> x = last;
+            for (int i = size - 1; i > index; i--)
+                x = x.prev;
+            return x;
+        }
+    }
+    public T retrieve (LinkedListIterator p) {
+        return p.isValid() ? (T) p.current.element : null;
+    }
+
+    public boolean isValid(int index) {
+        return (index >= 0 && index < size);
+    }
+
+    public T retrieve (int index) {
+        return isValid(index) ? (T) node(index).element : null;
+    }
 
     public void printList() {
         if (this.isEmpty())
@@ -184,12 +213,12 @@ public class myLinkedList<T> {
         public ListNode<T> prev;
 
         // Constructors
-        public ListNode(T theElement) {
-            this(null, theElement, null);
-        }
+        //public ListNode(T e) {
+            //this(null, e, null);
+        //}
 
-        public ListNode(ListNode<T> p, T theElement, ListNode<T> n) {
-            element = theElement;
+        public ListNode(ListNode<T> p, T e, ListNode<T> n) {
+            element = e;
             prev = p;
             next = n;
         }
@@ -223,6 +252,7 @@ public class myLinkedList<T> {
          */
         public T retrieve() {
             return isValid() ? (T) current.element : null;
+            //return (T) current.element;
         }
 
         /**
