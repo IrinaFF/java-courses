@@ -11,10 +11,12 @@ public interface Cell<T> {
     /**
      * пользователь предположил что это бомба
      */
-    boolean isSuggestEmpty();
+    boolean isSuggestBomb();
+
     /**
      * пользователь предположил что это пустая клетка
      */
+    boolean isSuggestEmpty();
     boolean suggestEmpty();
     /**
      * устанавливает бомбу
