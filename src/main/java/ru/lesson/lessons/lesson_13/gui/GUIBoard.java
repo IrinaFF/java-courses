@@ -43,12 +43,14 @@ public class GUIBoard extends JPanel implements Board{
      * @param y позиция по вертикали
      */
     public void drawCell(int x, int y){
+        System.out.println("***** SELECT *****");
         this.repaint();
     }
     /**
      * рисует взрыв сех бомб
      */
     public void drawBang(){
+        System.out.println("***** BANG *****");
         this.repaint();
     }
 
@@ -56,6 +58,6 @@ public class GUIBoard extends JPanel implements Board{
      * рисует поздравления когда игра выиграна
      */
     public void drawCongratulate(){
-
+        System.out.println("***** CONGRATULATE *****");
     }
 }

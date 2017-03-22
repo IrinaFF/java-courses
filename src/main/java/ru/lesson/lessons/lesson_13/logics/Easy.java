@@ -45,6 +45,7 @@ public class Easy implements SaperLogic {
      */
     @Override
     public void suggest(int x, int y, boolean bomb){
+        System.out.println("x="+x+" y="+y+" "+bomb);
         if (bomb) {
             this.cells[x][y].suggestBomb();
         }
