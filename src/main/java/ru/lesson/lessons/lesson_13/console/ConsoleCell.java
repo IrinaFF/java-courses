@@ -5,12 +5,16 @@ import ru.lesson.lessons.lesson_13.Cell;
 import java.io.PrintStream;
 
 /**
- * Created by IFatkullina on 21.03.2017.
+ * Консольная версия поведения клетки
  */
 public class ConsoleCell implements Cell<PrintStream> {
     private boolean bomb;
     private boolean suggestBomp = false;
     private boolean suggestEmpty = false;
+
+    public ConsoleCell(boolean bomb) {
+        this.bomb = bomb;
+    }
     /**
      * является ли это бомбой
      */
@@ -30,12 +34,16 @@ public class ConsoleCell implements Cell<PrintStream> {
      */
     @Override
     public boolean isSuggestEmpty(){
-        return this.suggestBomp;
-    }
-    @Override
-    public boolean suggestEmpty(){
         return this.suggestEmpty;
     }
+    /**
+     * устанавливает пустую клетку
+     */
+    @Override
+    public void suggestEmpty(){
+        this.suggestEmpty = true;
+    }
+
     /**
      * устанавливает бомбу
      */
@@ -50,6 +58,22 @@ public class ConsoleCell implements Cell<PrintStream> {
      */
     @Override
     public void draw(PrintStream paint, boolean real){
-
+        if (real) {
+            if (this.isBomb()) {
+                paint.print("[*]");
+            } else {
+                paint.print("[ ]");
+            }
+        }
+        else {
+            if (this.suggestBomp) {
+                paint.print("[?]");
+            } else
+                if (this.suggestEmpty){
+                    paint.print("[ ]");
+                } else {
+                    paint.print("[X]");
+                }
+        }
     }
 }

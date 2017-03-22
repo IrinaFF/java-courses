@@ -1,34 +1,46 @@
-package ru.lesson.lessons.lesson_13;
+package ru.lesson.lessons.lesson_13.gui;
+
+import ru.lesson.lessons.lesson_13.Cell;
+
+import java.awt.*;
 
 /**
- * Описывает поведение клетки
- */
-public interface Cell<T> {
+ * Графическая версия поведения клетки
+ **/
+
+public class GUICell implements Cell<Graphics> {
+
     /**
      * является ли это бомбой
      */
-    boolean isBomb();
+    public boolean isBomb() { return false; }
     /**
      * пользователь предположил что это бомба
      */
-    boolean isSuggestBomb();
+    public boolean isSuggestBomb() { return false; }
 
     /**
      * пользователь предположил что это пустая клетка
      */
-    boolean isSuggestEmpty();
+    public boolean isSuggestEmpty() { return false; }
     /**
      * устанавливает пустую клетку
      */
-    void suggestEmpty();
+    public void suggestEmpty() {
+
+    }
     /**
      * устанавливает бомбу
      */
-    void suggestBomb();
+    public void suggestBomb() {
+
+    }
     /**
      * Рисует клетку
      * @param paint - на чем рисуем
      * @param real - рисовать реальное значение или что пользователь выбрал
      */
-    void draw(T paint, boolean real);
+    public void draw(Graphics paint, boolean real) {
+        //paint.
+    }
 }

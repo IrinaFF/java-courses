@@ -18,7 +18,7 @@ public interface Board {
     /**
      * рисует взрыв сех бомб
      */
-    void drowBang();
+    void drawBang();
 
     /**
      * рисует поздравления когда игра выиграна

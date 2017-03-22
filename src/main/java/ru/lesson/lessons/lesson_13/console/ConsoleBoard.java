@@ -4,7 +4,7 @@ import ru.lesson.lessons.lesson_13.Board;
 import ru.lesson.lessons.lesson_13.Cell;
 
 /**
- * Created by IFatkullina on 21.03.2017.
+ * Консольная версия поведения доски
  */
 public class ConsoleBoard implements Board {
     //поле с картой
@@ -30,7 +30,7 @@ public class ConsoleBoard implements Board {
     /**
      * рисует взрыв сех бомб
      */
-    public void drowBang() {
+    public void drawBang() {
         System.out.println("***** BANG *****");
         this.redraw(true);
     }
