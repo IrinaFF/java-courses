@@ -9,31 +9,37 @@ import java.awt.*;
  **/
 
 public class GUICell implements Cell<Graphics> {
+    private boolean bomb;
+    private boolean suggestBomp = false;
+    private boolean suggestEmpty = false;
 
+    public GUICell(boolean bomb) {
+        this.bomb = bomb;
+    }
     /**
      * является ли это бомбой
      */
-    public boolean isBomb() { return false; }
+    public boolean isBomb() { return this.bomb; }
     /**
      * пользователь предположил что это бомба
      */
-    public boolean isSuggestBomb() { return false; }
+    public boolean isSuggestBomb() { return this.suggestBomp; }
 
     /**
      * пользователь предположил что это пустая клетка
      */
-    public boolean isSuggestEmpty() { return false; }
+    public boolean isSuggestEmpty() { return this.suggestEmpty; }
     /**
      * устанавливает пустую клетку
      */
     public void suggestEmpty() {
-
+        this.suggestEmpty = true;
     }
     /**
      * устанавливает бомбу
      */
     public void suggestBomb() {
-
+        this.suggestBomp = true;
     }
     /**
      * Рисует клетку
@@ -42,5 +48,22 @@ public class GUICell implements Cell<Graphics> {
      */
     public void draw(Graphics paint, boolean real) {
         //paint.
+        if (real) {
+            if (this.isBomb()) {
+                System.out.print("[*]");
+            } else {
+                System.out.print("[ ]");
+            }
+        }
+        else {
+            if (this.suggestBomp) {
+                System.out.print("[?]");
+            } else
+            if (this.suggestEmpty){
+                System.out.print("[ ]");
+            } else {
+                System.out.print("[X]");
+            }
+        }
     }
 }

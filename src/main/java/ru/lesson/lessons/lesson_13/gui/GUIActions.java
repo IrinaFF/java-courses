@@ -38,7 +38,14 @@ public class GUIActions extends BaseAction implements ActionListener, MouseListe
         boolean bomb = false;
         if (e.getX() > 50) x = 1;
         if (e.getY() > 50) y = 1;
-        if (e.getClickCount() > 1) bomb = true;
+        if (e.getButton() == 1) {
+            bomb = false;
+        }
+        else if (e.getButton() == 3) {
+            bomb = true;
+        }
+        else return;
+        //System.out.println("getButton: " + e.getButton());
         this.select(x,y,bomb);
         board.repaint();
     }

@@ -28,7 +28,7 @@ public class ConsoleBoard implements Board {
         this.redraw(false);
     }
     /**
-     * рисует взрыв сех бомб
+     * рисует взрыв бомбы
      */
     public void drawBang() {
         System.out.println("***** BANG *****");
@@ -42,6 +42,9 @@ public class ConsoleBoard implements Board {
         System.out.println("***** CONGRATULATE *****");
     }
 
+    /**
+     * рисует реальное положение бомб всех ячеек
+     */
     private void redraw(boolean real) {
        for (Cell[] row: cells) {
            for (Cell cell : row) {

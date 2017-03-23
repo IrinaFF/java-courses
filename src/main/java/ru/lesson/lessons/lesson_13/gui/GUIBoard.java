@@ -60,4 +60,14 @@ public class GUIBoard extends JPanel implements Board{
     public void drawCongratulate(){
         System.out.println("***** CONGRATULATE *****");
     }
+
+    private void redraw(boolean real) {
+        for (Cell[] row: cells) {
+            for (Cell cell : row) {
+                cell.draw(System.out, real);
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
 }

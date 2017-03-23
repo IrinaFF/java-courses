@@ -24,6 +24,7 @@ public class Easy implements SaperLogic {
     @Override
     public boolean shouldBang(int x, int y){
         final Cell selected = this.cells[x][y];
+        System.out.println("shouldBang: " + (selected.isBomb() && !selected.isSuggestBomb()));
         return selected.isBomb() && !selected.isSuggestBomb();
     }
     /**
@@ -38,6 +39,7 @@ public class Easy implements SaperLogic {
                         (cell.isSuggestEmpty() && !cell.isBomb())));
             }
         }
+        System.out.println("finish: " + finish);
         return finish;
     }
     /**

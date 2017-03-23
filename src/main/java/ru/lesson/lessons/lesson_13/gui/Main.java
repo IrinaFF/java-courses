@@ -38,8 +38,8 @@ public class Main {
                                     @Override
                                     public Cell[][] generate() {
                                         return new Cell[][] {
-                                                { new GUICell(), new GUICell() },
-                                                { new GUICell(), new GUICell() }};
+                                                { new GUICell(true), new GUICell(false) },
+                                                { new GUICell(true), new GUICell(false) }};
                                     }
                                 }
                         )
