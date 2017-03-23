@@ -18,21 +18,27 @@ public class GUIBoard extends JPanel implements Board{
     @Override
     protected void paintComponent(Graphics graphics){
         super.paintComponent(graphics);
+        System.out.println("GUIBoard.paintComponent");
         if (this.cells != null) {
             for (int x = 0; x != cells.length; x++ ) {
                 for (int y = 0; y != cells[0].length; y++ ) {
+                    System.out.println("x="+x+" y="+y);
                     graphics.setColor(Color.black);
                     cells[x][y].draw(graphics, false);
                     graphics.drawRect(x * PADDING, y * PADDING, PADDING, PADDING);
                 }
             }
+        } else {
+            System.out.println("this.cells = null");
         }
+
     }
 
     /**
      * рисует доску исходя из входящего массива ячеек
      */
     public void drawBoard(Cell[][] cells){
+        System.out.println("GUIBoard.drawBoard");
         this.cells = cells;
         this.repaint();
     }
@@ -43,14 +49,16 @@ public class GUIBoard extends JPanel implements Board{
      * @param y позиция по вертикали
      */
     public void drawCell(int x, int y){
-        System.out.println("***** SELECT *****");
+        //System.out.println("***** SELECT *****");
+        System.out.println("4. GUIBoard.drawCell");
         this.repaint();
     }
     /**
      * рисует взрыв сех бомб
      */
     public void drawBang(){
-        System.out.println("***** BANG *****");
+        //System.out.println("***** BANG *****");
+        System.out.println("GUIBoard.drawBang");
         this.repaint();
     }
 
@@ -58,10 +66,12 @@ public class GUIBoard extends JPanel implements Board{
      * рисует поздравления когда игра выиграна
      */
     public void drawCongratulate(){
-        System.out.println("***** CONGRATULATE *****");
+        //System.out.println("***** CONGRATULATE *****");
+        System.out.println("GUIBoard.drawCongratulate");
     }
 
     private void redraw(boolean real) {
+        System.out.println("GUIBoard.redraw");
         for (Cell[] row: cells) {
             for (Cell cell : row) {
                 cell.draw(System.out, real);

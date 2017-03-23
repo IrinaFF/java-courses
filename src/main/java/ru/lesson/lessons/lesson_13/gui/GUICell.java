@@ -40,6 +40,7 @@ public class GUICell implements Cell<Graphics> {
      */
     public void suggestBomb() {
         this.suggestBomp = true;
+        System.out.println("3. GUICell.suggestBomb");
     }
     /**
      * Рисует клетку
@@ -48,21 +49,22 @@ public class GUICell implements Cell<Graphics> {
      */
     public void draw(Graphics paint, boolean real) {
         //paint.
+        System.out.println("GUICell.draw");
         if (real) {
             if (this.isBomb()) {
-                System.out.print("[*]");
+                System.out.println("[*]");
             } else {
-                System.out.print("[ ]");
+                System.out.println("[ ]");
             }
         }
         else {
             if (this.suggestBomp) {
-                System.out.print("[?]");
+                System.out.println("[?]");
             } else
             if (this.suggestEmpty){
-                System.out.print("[ ]");
+                System.out.println("[ ]");
             } else {
-                System.out.print("[X]");
+                System.out.println("[X]");
             }
         }
     }

@@ -33,6 +33,7 @@ public class GUIActions extends BaseAction implements ActionListener, MouseListe
     }
 
     public void mouseClicked(MouseEvent e) {
+        System.out.println("0. GUIActions.mouseClicked");
         int x = 0;
         int y = 0;
         boolean bomb = false;

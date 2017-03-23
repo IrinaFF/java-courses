@@ -26,6 +26,7 @@ public class BaseAction implements UserAction {
      * действие пользователя
      */
     public void select(int x, int y, boolean bomb) {
+        System.out.println("1. BaseAction.select");
         this.logic.suggest(x,y,bomb);
         board.drawCell(x,y);
         if (this.logic.shouldBang(x,y)) {
