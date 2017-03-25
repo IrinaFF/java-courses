@@ -32,13 +32,18 @@ public class Easy implements SaperLogic {
      */
     @Override
     public boolean finish(){
-        boolean finish = false;
+        System.out.println("SaperLogic.finish");
+        boolean finish = true;
+        boolean finish1 = false;
         for (Cell[] row : cells) {
             for (Cell cell : row) {
-                finish = ((cell.isSuggestBomb() && cell.isBomb() ||
+                finish1 = ((cell.isSuggestBomb() && cell.isBomb() ||
                         (cell.isSuggestEmpty() && !cell.isBomb())));
+                System.out.println("isBomb=" + cell.isBomb()+" finish1 =" + finish1 );
+                finish &= finish1;
             }
         }
+
         System.out.println("finish: " + finish);
         return finish;
     }

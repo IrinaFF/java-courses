@@ -12,6 +12,7 @@ public class GUICell implements Cell<Graphics> {
     private boolean bomb;
     private boolean suggestBomp = false;
     private boolean suggestEmpty = false;
+    public static final int PADDING = 50;
 
     public GUICell(boolean bomb) {
         this.bomb = bomb;
@@ -53,18 +54,24 @@ public class GUICell implements Cell<Graphics> {
         if (real) {
             if (this.isBomb()) {
                 System.out.println("[*]");
+                paint.setColor(Color.red);
+                //paint.drawRect(x * PADDING, y * PADDING, PADDING, PADDING);
             } else {
                 System.out.println("[ ]");
+                paint.setColor(Color.green);
             }
         }
         else {
             if (this.suggestBomp) {
                 System.out.println("[?]");
+                paint.setColor(Color.yellow);
             } else
             if (this.suggestEmpty){
                 System.out.println("[ ]");
+                paint.setColor(Color.blue);
             } else {
                 System.out.println("[X]");
+                paint.setColor(Color.darkGray);
             }
         }
     }

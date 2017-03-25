@@ -22,7 +22,7 @@ public class GUIBoard extends JPanel implements Board{
         if (this.cells != null) {
             for (int x = 0; x != cells.length; x++ ) {
                 for (int y = 0; y != cells[0].length; y++ ) {
-                    System.out.println("x="+x+" y="+y);
+                    System.out.println("x="+x+" y="+y + ", isBomb=" + cells[x][y].isBomb());
                     graphics.setColor(Color.black);
                     cells[x][y].draw(graphics, false);
                     graphics.drawRect(x * PADDING, y * PADDING, PADDING, PADDING);
@@ -59,6 +59,7 @@ public class GUIBoard extends JPanel implements Board{
     public void drawBang(){
         //System.out.println("***** BANG *****");
         System.out.println("GUIBoard.drawBang");
+
         this.repaint();
     }
 
