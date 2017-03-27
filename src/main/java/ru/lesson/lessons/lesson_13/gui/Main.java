@@ -43,8 +43,8 @@ public class Main {
                                     @Override
                                     public Cell[][] generate() {
                                         return new Cell[][] {
-                                                { new GUICell(true), new GUICell(false) },
-                                                { new GUICell(true), new GUICell(false) }};
+                                                { new GUICell(false), new GUICell(true) },
+                                                { new GUICell(false), new GUICell(true) }};
                                     }
                                 }
                         )

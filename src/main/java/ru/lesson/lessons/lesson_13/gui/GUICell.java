@@ -44,7 +44,7 @@ public class GUICell implements Cell<Graphics> {
      */
     public void suggestBomb() {
         this.suggestBomp = true;
-        System.out.println("3. GUICell.suggestBomb");
+        //System.out.println("3. GUICell.suggestBomb");
     }
     /**
      * Рисует клетку
@@ -53,31 +53,37 @@ public class GUICell implements Cell<Graphics> {
      */
     public void draw(Graphics paint, boolean real) {
         Color oldColor = paint.getColor();
+        paint.setColor(Color.white);
         System.out.println("GUICell.draw");
         if (real) {
             if (this.isBomb()) {
                 System.out.println("[*]");
-                paint.setColor(Color.red);
+                //paint.setColor(Color.red);
+                paint.drawString("[*]",0,0);
             } else {
                 System.out.println("[ ]");
-                paint.setColor(Color.green);
+                //paint.setColor(Color.green);
+                paint.drawString("[ ]",0,0);
             }
         }
         else {
             if (this.suggestBomp) {
-                System.out.println("ORANGE [?]");
-                paint.setColor(Color.ORANGE);
+                System.out.println("[?]");
+                //paint.setColor(Color.ORANGE);
+                paint.drawString("[?]",0,0);
             } else
             if (this.suggestEmpty){
-                System.out.println("darkGray [ ]");
-                paint.setColor(Color.darkGray);
+                System.out.println("[ ]");
+                //paint.setColor(Color.darkGray);
+                paint.drawString("[ ]",0,0);
             } else {
-                System.out.println("gray [X]");
-                paint.setColor(Color.gray);
+                System.out.println("[X]");
+                //paint.setColor(Color.gray);
+                paint.drawString("[X]",0,0);
 
             }
         }
-        paint.fillOval(PADDING/2, PADDING/2, PADDING, PADDING);
+        //paint.fillOval(PADDING/2, PADDING/2, PADDING, PADDING);
         paint.setColor(oldColor);
     }
 }

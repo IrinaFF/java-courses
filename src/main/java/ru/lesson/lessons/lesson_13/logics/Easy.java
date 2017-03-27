@@ -39,7 +39,7 @@ public class Easy implements SaperLogic {
             for (Cell cell : row) {
                 finish1 = ((cell.isSuggestBomb() && cell.isBomb() ||
                         (cell.isSuggestEmpty() && !cell.isBomb())));
-                System.out.println("isBomb=" + cell.isBomb()+" finish1 =" + finish1 );
+                //System.out.println("isBomb=" + cell.isBomb()+" finish1 =" + finish1 );
                 finish &= finish1;
             }
         }
