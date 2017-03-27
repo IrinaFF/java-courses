@@ -19,6 +19,7 @@ public class GUIBoard extends JPanel implements Board{
     protected void paintComponent(Graphics graphics){
         super.paintComponent(graphics);
         System.out.println("GUIBoard.paintComponent");
+        graphics.fillRect (0, 0, this.getWidth () , this.getHeight ()) ;
         if (this.cells != null) {
             for (int x = 0; x != cells.length; x++ ) {
                 for (int y = 0; y != cells[0].length; y++ ) {
@@ -26,6 +27,10 @@ public class GUIBoard extends JPanel implements Board{
                     graphics.setColor(Color.black);
                     cells[x][y].draw(graphics, false);
                     graphics.drawRect(x * PADDING, y * PADDING, PADDING, PADDING);
+                    graphics.setColor(Color.gray);
+                    graphics.fillRect((x * PADDING)+2, (y * PADDING)+2, PADDING-4, PADDING-4);
+                    graphics.drawString("x="+x+" y="+y, (x* PADDING)+10,(y* PADDING)+10);
+                    graphics.drawString(Boolean.toString(cells[x][y].isBomb()), (x* PADDING)+10,(y* PADDING)+20);
                 }
             }
         } else {
@@ -51,15 +56,33 @@ public class GUIBoard extends JPanel implements Board{
     public void drawCell(int x, int y){
         //System.out.println("***** SELECT *****");
         System.out.println("4. GUIBoard.drawCell");
-        this.repaint();
+        Graphics gr;
+        gr = getGraphics(); //получаем графический контекст
+        //this.repaint();
+        if (this.cells != null) {
+            //gr.setColor(Color.red);
+            gr.translate(x * PADDING, y * PADDING);
+            cells[x][y].draw(gr, false);
+        }
     }
     /**
-     * рисует взрыв сех бомб
+     * рисует взрыв всех бомб
      */
     public void drawBang(){
-        //System.out.println("***** BANG *****");
-        System.out.println("GUIBoard.drawBang");
-
+        System.out.println("***** BANG *****");
+        //System.out.println("GUIBoard.drawBang");
+        Graphics gr;
+        gr = getGraphics(); //получаем графический контекст
+        if (this.cells != null) {
+            for (int x = 0; x != cells.length; x++ ) {
+                for (int y = 0; y != cells[0].length; y++ ) {
+                    System.out.println("x="+x+" y="+y + ", isBomb=" + cells[x][y].isBomb());
+                    gr.setColor(Color.red);
+                    cells[x][y].draw(gr, true);
+                    //gr.drawRect(x * PADDING, y * PADDING, PADDING, PADDING);
+                }
+            }
+        }
         this.repaint();
     }
 

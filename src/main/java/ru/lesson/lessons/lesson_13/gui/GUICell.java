@@ -12,7 +12,10 @@ public class GUICell implements Cell<Graphics> {
     private boolean bomb;
     private boolean suggestBomp = false;
     private boolean suggestEmpty = false;
-    public static final int PADDING = 50;
+    private boolean isSelect = false;
+    public static final int PADDING = 25;
+    private int x = 0;
+    private int y = 0;
 
     public GUICell(boolean bomb) {
         this.bomb = bomb;
@@ -49,13 +52,12 @@ public class GUICell implements Cell<Graphics> {
      * @param real - рисовать реальное значение или что пользователь выбрал
      */
     public void draw(Graphics paint, boolean real) {
-        //paint.
+        Color oldColor = paint.getColor();
         System.out.println("GUICell.draw");
         if (real) {
             if (this.isBomb()) {
                 System.out.println("[*]");
                 paint.setColor(Color.red);
-                //paint.drawRect(x * PADDING, y * PADDING, PADDING, PADDING);
             } else {
                 System.out.println("[ ]");
                 paint.setColor(Color.green);
@@ -63,16 +65,19 @@ public class GUICell implements Cell<Graphics> {
         }
         else {
             if (this.suggestBomp) {
-                System.out.println("[?]");
-                paint.setColor(Color.yellow);
+                System.out.println("ORANGE [?]");
+                paint.setColor(Color.ORANGE);
             } else
             if (this.suggestEmpty){
-                System.out.println("[ ]");
-                paint.setColor(Color.blue);
-            } else {
-                System.out.println("[X]");
+                System.out.println("darkGray [ ]");
                 paint.setColor(Color.darkGray);
+            } else {
+                System.out.println("gray [X]");
+                paint.setColor(Color.gray);
+
             }
         }
+        paint.fillOval(PADDING/2, PADDING/2, PADDING, PADDING);
+        paint.setColor(oldColor);
     }
 }

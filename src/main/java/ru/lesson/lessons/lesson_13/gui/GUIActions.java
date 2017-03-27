@@ -32,6 +32,7 @@ public class GUIActions extends BaseAction implements ActionListener, MouseListe
         this.initGame();
     }
 
+    //выполнен щелчок мышкой на наблюдаемом объекте
     public void mouseClicked(MouseEvent e) {
         System.out.println("0. GUIActions.mouseClicked");
         int x = 0;
@@ -48,21 +49,25 @@ public class GUIActions extends BaseAction implements ActionListener, MouseListe
         else return;
         //System.out.println("getButton: " + e.getButton());
         this.select(x,y,bomb);
-        board.repaint();
+        //board.repaint();
     }
 
+    //кнопка мыши нажата в момент, когда курсор находится над наблюдаемым объектом
     public void mousePressed(MouseEvent e) {
 
     }
 
+    //кнопка мыши отпущена в момент, когда курсор находится над наблюдаемым объектом
     public void mouseReleased(MouseEvent e) {
 
     }
 
+    //курсор мыши вошел в область наблюдаемого объекта
     public void mouseEntered(MouseEvent e) {
 
     }
 
+    //курсор мыши вышел из области наблюдаемого объекта
     public void mouseExited(MouseEvent e) {
 
     }
