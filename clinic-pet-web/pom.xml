@@ -48,7 +48,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>ru.lesson.lessons.lesson_4.Calculate</mainClass>
+              <mainClass>ru.lesson.lessons.lesson_6v1.Clinic</mainClass>
               <addClasspath>true</addClasspath>
             </manifest>
           </archive>

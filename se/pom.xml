@@ -37,7 +37,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>ru.lessons.lesson_6.Cinic</mainClass>
+              <mainClass>ru.lessons.lesson_6v1.Clinic</mainClass>
               <addClasspath>true</addClasspath>
             </manifest>
           </archive>
